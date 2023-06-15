@@ -3,6 +3,7 @@
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import {
 		currentMetadata,
+		currentState,
 		currentAvatar,
 		currentAttributes,
 		currentHealth,
@@ -12,7 +13,8 @@
 		currentMisc,
 		currentSkills,
 		currentFeats,
-		currentGear
+		currentGear,
+		currentSpells
 	} from '../storeCharacter';
 
 	// Props
@@ -22,6 +24,7 @@
 	const exportCharacterJson = () => {
 		const character = {
 			metadata: { ...$currentMetadata },
+			state: { ...$currentState },
 			avatar: { ...$currentAvatar },
 			attributes: { ...$currentAttributes },
 			health: { ...$currentHealth },
@@ -31,7 +34,9 @@
 			misc: { ...$currentMisc },
 			skills: { ...$currentSkills },
 			feats: { ...$currentFeats },
-			gear: { ...$currentGear }
+			gear: { ...$currentGear },
+			spells: { ...$currentSpells }
+			
 		};
 		return JSON.stringify(character);
 	};

@@ -2,43 +2,43 @@ const system = 'dnd3.5e';
 
 export const load = async ({ fetch }) => {
 	const levels = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/levels.json`);
+		const res = await fetch(`/systems/${system}/data/levels.json`);
 		return await res.json();
 	};
 	const races = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/races.json`);
+		const res = await fetch(`/systems/${system}/data/races.json`);
 		return await res.json();
 	};
 	const alignments = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/alignments.json`);
+		const res = await fetch(`/systems/${system}/data/alignments.json`);
 		return await res.json();
 	};
 	const skills = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/skills.json`);
+		const res = await fetch(`/systems/${system}/data/skills.json`);
 		return await res.json();
 	};
 	const classes = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/classes.json`);
+		const res = await fetch(`/systems/${system}/data/classes.json`);
 		return await res.json();
 	};
 	const feats = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/feats.json`);
+		const res = await fetch(`/systems/${system}/data/feats.json`);
 		return await res.json();
 	};
 	const protection = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/protection.json`);
+		const res = await fetch(`/systems/${system}/data/protection.json`);
 		return await res.json();
 	};
 	const weapons = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/weapons.json`);
+		const res = await fetch(`/systems/${system}/data/weapons.json`);
 		return await res.json();
 	};
 	const equipment = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/equipment.json`);
+		const res = await fetch(`/systems/${system}/data/equipment.json`);
 		return await res.json();
 	};
 	const spells = async () => {
-		const res = await fetch(`src/lib/systems/${system}/data/spells.json`);
+		const res = await fetch(`/systems/${system}/data/spells.json`);
 		return await res.json();
 	};
 

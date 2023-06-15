@@ -1,0 +1,684 @@
+{
+    "armor": [
+      {
+        "id": "bandedMail",
+        "_comment": {},
+        "description": {
+          "name": "Banded mail",
+          "source": null,
+          "price": "250 gp",
+          "weight": 35
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 6,
+          "checkPenalty": -6,
+          "maxDexBonus": 1,
+          "arcaneSpellFailure": 35,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "body",
+            "hands"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Heavy Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "breastplate",
+        "_comment": {},
+        "description": {
+          "name": "Breastplate",
+          "source": null,
+          "price": "200 gp",
+          "weight": 25
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 5,
+          "checkPenalty": -4,
+          "maxDexBonus": 3,
+          "arcaneSpellFailure": 25,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "head",
+            "body",
+            "legs"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Heavy Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "chainShirt",
+        "_comment": {},
+        "description": {
+          "name": "Chain shirt",
+          "source": null,
+          "price": "100 gp",
+          "weight": 25
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 4,
+          "checkPenalty": -2,
+          "maxDexBonus": 4,
+          "arcaneSpellFailure": 20,
+          "speed_20": "20 ft",
+          "speed_30": "30 ft",
+          "coverage": [
+            "head",
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Light Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "chainmail",
+        "_comment": {},
+        "description": {
+          "name": "Chainmail",
+          "source": null,
+          "price": "150 gp",
+          "weight": 40
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 5,
+          "checkPenalty": -5,
+          "maxDexBonus": 2,
+          "arcaneSpellFailure": 30,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "head",
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Medium Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "fullPlate",
+        "_comment": {},
+        "description": {
+          "name": "Full plate",
+          "source": null,
+          "price": "1500 gp",
+          "weight": 50
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 8,
+          "checkPenalty": -6,
+          "maxDexBonus": 1,
+          "arcaneSpellFailure": 35,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "head",
+            "body",
+            "arms",
+            "hands",
+            "legs",
+            "feet"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Heavy Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "half-plate",
+        "_comment": {},
+        "description": {
+          "name": "Half-plate",
+          "source": null,
+          "price": "600 gp",
+          "weight": 50
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 7,
+          "checkPenalty": -7,
+          "maxDexBonus": 0,
+          "arcaneSpellFailure": 40,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "body",
+            "arms",
+            "hands"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Heavy Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "hide",
+        "_comment": {},
+        "description": {
+          "name": "Hide",
+          "source": null,
+          "price": "15 gp",
+          "weight": 25
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 3,
+          "checkPenalty": -3,
+          "maxDexBonus": 4,
+          "arcaneSpellFailure": 20,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Medium Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "leather",
+        "_comment": {},
+        "description": {
+          "name": "Leather",
+          "source": null,
+          "price": "10 gp",
+          "weight": 15
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 2,
+          "checkPenalty": 0,
+          "maxDexBonus": 6,
+          "arcaneSpellFailure": 10,
+          "speed_20": "20 ft",
+          "speed_30": "30 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Light Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "padded",
+        "_comment": {},
+        "description": {
+          "name": "Padded",
+          "source": null,
+          "price": "5 gp",
+          "weight": 10
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 1,
+          "checkPenalty": 0,
+          "maxDexBonus": 8,
+          "arcaneSpellFailure": 5,
+          "speed_20": "20 ft",
+          "speed_30": "30 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Light Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "scaleMail",
+        "_comment": {},
+        "description": {
+          "name": "Scale mail",
+          "source": null,
+          "price": "50 gp",
+          "weight": 30
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 4,
+          "checkPenalty": -4,
+          "maxDexBonus": 3,
+          "arcaneSpellFailure": 25,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Medium Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "splintMail",
+        "_comment": {},
+        "description": {
+          "name": "Splint mail",
+          "source": null,
+          "price": "200 gp",
+          "weight": 45
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 6,
+          "checkPenalty": -7,
+          "maxDexBonus": 0,
+          "arcaneSpellFailure": 40,
+          "speed_20": "15 ft",
+          "speed_30": "20 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Heavy Armor"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "studdedLeather",
+        "_comment": {},
+        "description": {
+          "name": "Studded leather",
+          "source": null,
+          "price": "25 gp",
+          "weight": 20
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 3,
+          "checkPenalty": -1,
+          "maxDexBonus": 5,
+          "arcaneSpellFailure": 15,
+          "speed_20": "20 ft",
+          "speed_30": "30 ft",
+          "coverage": [
+            "body"
+          ],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Light Armor"
+        },
+        "inputs": {}
+      }
+    ],
+    "shield": [
+      {
+        "id": "buckler",
+        "_comment": {},
+        "description": {
+          "name": "Buckler",
+          "source": null,
+          "price": "15 gp",
+          "weight": 5
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 1,
+          "checkPenalty": -1,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 5,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "heavySteelShield",
+        "_comment": {},
+        "description": {
+          "name": "Shield, heavy steel",
+          "source": null,
+          "price": "20 gp",
+          "weight": 15
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 2,
+          "checkPenalty": -2,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 15,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "heavyWoodenShield",
+        "_comment": {},
+        "description": {
+          "name": "Shield, heavy wooden",
+          "source": null,
+          "price": "7 gp",
+          "weight": 10
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 2,
+          "checkPenalty": -2,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 15,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "lightSteelShield",
+        "_comment": {},
+        "description": {
+          "name": "Shield, light steel",
+          "source": null,
+          "price": "9 gp",
+          "weight": 6
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 1,
+          "checkPenalty": -1,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 5,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "lightWoodenShield",
+        "_comment": {},
+        "description": {
+          "name": "Shield, light wooden",
+          "source": null,
+          "price": "3 gp",
+          "weight": 5
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 1,
+          "checkPenalty": -1,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 5,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "towerShield",
+        "_comment": {},
+        "description": {
+          "name": "Shield, tower",
+          "source": null,
+          "price": "30 gp",
+          "weight": 45
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 4,
+          "checkPenalty": -10,
+          "maxDexBonus": 2,
+          "arcaneSpellFailure": 50,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Shield"
+        },
+        "inputs": {}
+      }
+    ],
+    "accessory": [
+      {
+        "id": "gauntlet_locked",
+        "_comment": {},
+        "description": {
+          "name": "Gauntlet, locked",
+          "source": null,
+          "price": "8 gp",
+          "weight": 5
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 0,
+          "checkPenalty": 0,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 0,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": null,
+            "smallDie": null,
+            "critical": null,
+            "type": [
+              "Bludgeoning"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Accessory"
+        },
+        "inputs": {}
+      },
+      {
+        "id": "shieldSpikes",
+        "_comment": {},
+        "description": {
+          "name": "Shield Spikes",
+          "source": null,
+          "price": "10 gp",
+          "weight": 5
+        },
+        "visible": {
+          "size": null,
+          "armorBonus": 0,
+          "checkPenalty": 0,
+          "maxDexBonus": null,
+          "arcaneSpellFailure": 0,
+          "speed_20": "",
+          "speed_30": "",
+          "coverage": [],
+          "combat": {
+            "mediumDie": "1d6",
+            "smallDie": "1d4",
+            "critical": "x2",
+            "type": [
+              "Piercing"
+            ]
+          }
+        },
+        "hidden": {
+          "type": "Accessory"
+        },
+        "inputs": {}
+      }
+    ]
+}

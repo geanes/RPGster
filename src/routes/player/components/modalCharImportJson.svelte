@@ -2,6 +2,7 @@
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import {
 		currentMetadata,
+		currentState,
 		currentAvatar,
 		currentAttributes,
 		currentHealth,
@@ -11,7 +12,8 @@
 		currentMisc,
 		currentSkills,
 		currentFeats,
-		currentGear
+		currentGear,
+		currentSpells
 	} from '../storeCharacter';
 
 	// Props
@@ -23,6 +25,7 @@
 	const importCharacterJson = () => {
 		const character = JSON.parse(charJson);
 		$currentMetadata = character.metadata;
+		$currentState = character.state;
 		$currentAvatar = character.avatar;
 		$currentAttributes = character.attributes;
 		$currentHealth = character.health;
@@ -33,6 +36,7 @@
 		$currentSkills = character.skills;
 		$currentFeats = character.feats;
 		$currentGear = character.gear;
+		$currentSpells = character.spells;
 		modalStore.close();
 	};
 
