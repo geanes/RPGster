@@ -40,7 +40,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/kit": "^1.5.0",
 		"@dicebear/collection": "^6.0.4",
 		"@dicebear/core": "^6.0.4",
 		"iconify-icon": "^1.0.7",
