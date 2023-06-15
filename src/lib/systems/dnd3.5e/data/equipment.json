@@ -1,0 +1,1261 @@
+{
+    "gear": {
+        "general": [
+
+            {
+                "id": "backpack",
+                "_comment": {},
+                "description": {
+                    "name":  "Backpack (empty)",
+                    "source": null,
+                    "price": "2 gp",
+                    "weight": "2 lb"
+                },
+                "visible": {
+                    "basic": {},
+                    "combat": {}
+                },
+                "hidden": {
+                    "type": null
+                },
+                "inputs":{}
+            },
+
+            {
+                "id": "barrel",
+                "_comment": {},
+                "description": {
+                    "name":  "Barrel (empty)",
+                    "source": null,
+                    "price": "2 gp",
+                        "weight": "30 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "basket",
+                "_comment": {},
+                "description": {
+                    "name":  "Basket (empty)",
+                    "source": null,
+                    "price": "4 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "bedroll",
+                "_comment": {},
+                "description": {
+                    "name":  "Bedroll",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "bell",
+                "_comment": {},
+                "description": {
+                    "name":  "Bell",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "winterBlanket",
+                "_comment": {},
+                "description": {
+                    "name":  "Blanket, winter",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "3 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "blockAndTackle",
+                "_comment": {},
+                "description": {
+                    "name":  "Block and tackle",
+                    "source": null,
+                    "price": "5 gp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "bottle",
+                "_comment": {},
+                "description": {
+                    "name":  "Bottle, wine, glass",
+                    "source": null,
+                    "price": "2 gp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "bucket",
+                "_comment": {},
+                "description": {
+                    "name":  "Bucket (empty)",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "caltrops",
+                "_comment": {},
+                "description": {
+                    "name":  "Caltrops",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "candle",
+                "_comment": {},
+                "description": {
+                    "name":  "Candle",
+                    "source": null,
+                    "price": "1 cp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "canvas",
+                "_comment": {},
+                "description": {
+                    "name":  "Canvas (sq. yd.)",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "scrollCase",
+                "_comment": {},
+                "description": {
+                    "name":  "Case, map or scroll",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "0.5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "chain",
+                "_comment": {},
+                "description": {
+                    "name":  "Chain (10 ft.)",
+                    "source": null,
+                    "price": "30 gp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "chalk",
+                "_comment": {},
+                "description": {
+                    "name":  "Chalk, 1 piece",
+                    "source": null,
+                    "price": "1 cp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "chest",
+                "_comment": {},
+                "description": {
+                    "name":  "Chest (empty)",
+                    "source": null,
+                    "price": "2 gp",
+                        "weight": "25 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "crowbar",
+                "_comment": {},
+                "description": {
+                    "name":  "Crowbar",
+                    "source": null,
+                    "price": "2 gp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "firewood",
+                "_comment": {},
+                "description": {
+                    "name":  "Firewood (per day)",
+                    "source": null,
+                    "price": "1 cp",
+                        "weight": "20 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            {
+                "id": "fishhook",
+                "_comment": {},
+                "description": {
+                    "name":  "Fishhook",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "fishingNet",
+                "_comment": {},
+                "description": {
+                    "name":  "Fishing net, 25 sq. ft.",
+                    "source": null,
+                    "price": "4 gp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "flask",
+                "_comment": {},
+                "description": {
+                    "name":  "Flask (empty)",
+                    "source": null,
+                    "price": "3 cp",
+                        "weight": "1.5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "flintAndSteel",
+                "_comment": {},
+                "description": {
+                    "name":  "Flint and steel",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "grapplingHook",
+                "_comment": {},
+                "description": {
+                    "name":  "Grappling hook",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "4 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "hammer",
+                "_comment": {},
+                "description": {
+                    "name":  "Hammer",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "ink",
+                "_comment": {},
+                "description": {
+                    "name":  "Ink (1 oz. vial)",
+                    "source": null,
+                    "price": "8 gp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "inkpen",
+                "_comment": {},
+                "description": {
+                    "name":  "Inkpen",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "jug",
+                "_comment": {},
+                "description": {
+                    "name":  "Jug, clay",
+                    "source": null,
+                    "price": "3 cp",
+                        "weight": "9 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "ladder",
+                "_comment": {},
+                "description": {
+                    "name":  "Ladder, 10-foot",
+                    "source": null,
+                    "price": "5 cp",
+                        "weight": "20 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "commonLamp",
+                "_comment": {},
+                "description": {
+                    "name":  "Lamp, common",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "bullseyeLantern",
+                "_comment": {},
+                "description": {
+                    "name":  "Lantern, bullseye",
+                    "source": null,
+                    "price": "12 gp",
+                        "weight": "3 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "hoodedLantern",
+                "_comment": {},
+                "description": {
+                    "name":  "Lantern, hooded",
+                    "source": null,
+                    "price": "7 gp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "simpleLock",
+                "_comment": {},
+                "description": {
+                    "name":  "Lock (very simple)",
+                    "source": null,
+                    "price": "20 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "averageLock",
+                "_comment": {},
+                "description": {
+                    "name":  "Lock (average)",
+                    "source": null,
+                    "price": "40 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "goodLock",
+                "_comment": {},
+                "description": {
+                    "name":  "Lock (good)",
+                    "source": null,
+                    "price": "80 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "amazingLock",
+                "_comment": {},
+                "description": {
+                    "name":  "Lock (amazing)",
+                    "source": null,
+                    "price": "150 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "manacles",
+                "_comment": {},
+                "description": {
+                    "name":  "Manacles",
+                    "source": null,
+                    "price": "15 gp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "masterworkManacles",
+                "_comment": {},
+                "description": {
+                    "name":  "Manacles, masterwork",
+                    "source": null,
+                    "price": "50 gp",
+                        "weight": "2 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "mirror",
+                "_comment": {},
+                "description": {
+                    "name":  "Mirror, small steel",
+                    "source": null,
+                    "price": "10 gp",
+                        "weight": "0.5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "mug",
+                "_comment": {},
+                "description": {
+                    "name":  "Mug/Tankard, clay",
+                    "source": null,
+                    "price": "2 cp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "oil",
+                "_comment": {},
+                "description": {
+                    "name":  "Oil (1-pint flask)",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "paper",
+                "_comment": {},
+                "description": {
+                    "name":  "Paper (sheet)",
+                    "source": null,
+                    "price": "4 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "parchment",
+                "_comment": {},
+                "description": {
+                    "name":  "Parchment (sheet)",
+                    "source": null,
+                    "price": "2 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "minersPick",
+                "_comment": {},
+                "description": {
+                    "name":  "Pick, miner’s",
+                    "source": null,
+                    "price": "3 gp",
+                        "weight": "10 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "pitcher",
+                "_comment": {},
+                "description": {
+                    "name":  "Pitcher, clay",
+                    "source": null,
+                    "price": "2 cp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "piton",
+                "_comment": {},
+                "description": {
+                    "name":  "Piton",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "½ lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "pole",
+                "_comment": {},
+                "description": {
+                    "name":  "Pole, 10-foot",
+                    "source": null,
+                    "price": "2 sp",
+                        "weight": "8 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "pot",
+                "_comment": {},
+                "description": {
+                    "name":  "Pot, iron",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "10 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "beltPouch",
+                "_comment": {},
+                "description": {
+                    "name":  "Pouch, belt (empty)",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "½ lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "portableRam",
+                "_comment": {},
+                "description": {
+                    "name":  "Ram, portable",
+                    "source": null,
+                    "price": "10 gp",
+                        "weight": "20 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "trailRations",
+                "_comment": {},
+                "description": {
+                    "name":  "Rations, trail (per day)",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "hempRope",
+                "_comment": {},
+                "description": {
+                    "name":  "Rope, hempen (50 ft.)",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "10 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "silkRope",
+                "_comment": {},
+                "description": {
+                    "name":  "Rope, silk (50 ft.)",
+                    "source": null,
+                    "price": "10 gp",
+                        "weight": "5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "sack",
+                "_comment": {},
+                "description": {
+                    "name":  "Sack (empty)",
+                    "source": null,
+                    "price": "1 sp",
+                        "weight": "0.5 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "sealingWax",
+                "_comment": {},
+                "description": {
+                    "name":  "Sealing wax",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "sewingNeedle",
+                "_comment": {},
+                "description": {
+                    "name":  "Sewing needle",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "signalWhistle",
+                "_comment": {},
+                "description": {
+                    "name":  "Signal whistle",
+                    "source": null,
+                    "price": "8 sp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "signetRing",
+                "_comment": {},
+                "description": {
+                    "name":  "Signet ring",
+                    "source": null,
+                    "price": "5 gp",
+                        "weight": "0 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "sledge",
+                "_comment": {},
+                "description": {
+                    "name":  "Sledge",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "10 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "soap",
+                "_comment": {},
+                "description": {
+                    "name":  "Soap (per lb)",
+                    "source": null,
+                    "price": "5 sp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "shovel",
+                "_comment": {},
+                "description": {
+                    "name":  "Spade or shovel",
+                    "source": null,
+                    "price": "2 gp",
+                        "weight": "8 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "spyglass",
+                "_comment": {},
+                "description": {
+                    "name":  "Spyglass",
+                    "source": null,
+                    "price": "1000 gp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "tent",
+                "_comment": {},
+                "description": {
+                    "name":  "Tent",
+                    "source": null,
+                    "price": "10 gp",
+                        "weight": "20 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "torch",
+                "_comment": {},
+                "description": {
+                    "name":  "Torch",
+                    "source": null,
+                    "price": "1 cp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "vial",
+                "_comment": {},
+                "description": {
+                    "name":  "Vial, ink or potion",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "0.1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "waterskin",
+                "_comment": {},
+                "description": {
+                    "name":  "Waterskin",
+                    "source": null,
+                    "price": "1 gp",
+                        "weight": "4 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            },
+
+            { 
+                "id": "whetstone",
+                "_comment": {},
+                "description": {
+                    "name":  "Whetstone",
+                    "source": null,
+                    "price": "2 cp",
+                        "weight": "1 lb"
+                    },
+                    "visible": {
+                        "basic": {},
+                        "combat": {}
+                    },
+                    "hidden": {
+                        "type": null
+                    },
+                    "inputs":{}
+            }
+        ]
+    }
+}
+
