@@ -1,4 +1,4 @@
-# RPGster
+# RPGstr
 
 Role Playing Game Stuff Transmitted by Relays
 
