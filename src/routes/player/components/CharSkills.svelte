@@ -92,20 +92,20 @@
 							{#if classSkills.includes(item.id)}
 								<iconify-icon
 									icon="tabler:circle-dot"
-									in:send={{ key: 'circle' }}
-									out:receive={{ key: 'circle' }}
+									in:send|global={{ key: 'circle' }}
+									out:receive|global={{ key: 'circle' }}
 								/>
 							{:else if !item.trained}
 								<iconify-icon
 									icon="material-symbols:circle"
-									in:send={{ key: 'circle' }}
-									out:receive={{ key: 'circle' }}
+									in:send|global={{ key: 'circle' }}
+									out:receive|global={{ key: 'circle' }}
 								/>
 							{:else}
 								<iconify-icon
 									icon="material-symbols:circle-outline"
-									in:send={{ key: 'circle' }}
-									out:receive={{ key: 'circle' }}
+									in:send|global={{ key: 'circle' }}
+									out:receive|global={{ key: 'circle' }}
 								/>
 							{/if}
 						</span>
@@ -179,20 +179,20 @@
 								{#if classSkills.includes(item.id)}
 									<iconify-icon
 										icon="tabler:circle-dot"
-										in:send={{ key: 'circle' }}
-										out:receive={{ key: 'circle' }}
+										in:send|global={{ key: 'circle' }}
+										out:receive|global={{ key: 'circle' }}
 									/>
 								{:else if !item.trained}
 									<iconify-icon
 										icon="material-symbols:circle"
-										in:send={{ key: 'circle' }}
-										out:receive={{ key: 'circle' }}
+										in:send|global={{ key: 'circle' }}
+										out:receive|global={{ key: 'circle' }}
 									/>
 								{:else}
 									<iconify-icon
 										icon="material-symbols:circle-outline"
-										in:send={{ key: 'circle' }}
-										out:receive={{ key: 'circle' }}
+										in:send|global={{ key: 'circle' }}
+										out:receive|global={{ key: 'circle' }}
 									/>
 								{/if}
 							</span>
