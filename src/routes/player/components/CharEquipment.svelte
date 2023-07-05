@@ -35,6 +35,10 @@
 	function removeUserEquipment(tag: string): void {
 		$currentGear.userEquipment = $currentGear.userEquipment.filter((item) => item.tag !== tag);
 	}
+
+	function filteredGear(id: string): any {
+		return gear.find((item: any) => item.id === id);
+	}
 </script>
 
 <div class="card variant-glass-surface">
@@ -46,14 +50,14 @@
 			<span class="p-2 pr-4 justify-self-end">
 				<button
 					title="Add gear"
-					class="btn-icon btn-icon-sm variant-filled"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalAddGear}
 				>
 					<iconify-icon icon="mdi:add-bold" />
 				</button>
 				<button
 					title="New gear"
-					class="btn-icon btn-icon-sm variant-filled"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalNewGear}
 				>
 					<iconify-icon icon="grommet-icons:new" />
@@ -83,7 +87,9 @@
 						</svelte:fragment>
 						<svelte:fragment slot="summary">
 							<span>
-								<h3 class="text-slate-100/80 inline-block">{item.description.name}</h3>
+								<h3 class="text-slate-100/80 inline-block">
+									{filteredGear(item.id).description.name}
+								</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
 									on:click={() => removeEquipment(item.tag)}
@@ -93,8 +99,10 @@
 								<span class="text-slate-100/70">{item.note}</span>
 							</span>
 							<ul class="text-slate-300/70 text-sm space-x-4">
-								<li class="inline-block text-orange-400/70">{item.description.price}</li>
-								<li class="inline-block">{item.description.weight} lbs.</li>
+								<li class="inline-block text-orange-400/70">
+									{filteredGear(item.id).description.price}
+								</li>
+								<li class="inline-block">{filteredGear(item.id).description.weight} lbs.</li>
 							</ul>
 						</svelte:fragment>
 						<svelte:fragment slot="content">
@@ -103,23 +111,23 @@
 							>
 								<div class="space-y-2 ml-2 p-2">
 									<ul>
-										{#each Object.keys(item.visible.basic) as key}
-											{#if item.visible.basic[key] && typeof item.visible.basic[key] != 'object'}
-												<li>{toTitleCase(key)}: {item.visible.basic[key]}</li>
+										{#each Object.keys(filteredGear(item.id).visible.basic) as key}
+											{#if filteredGear(item.id).visible.basic[key] && typeof filteredGear(item.id).visible.basic[key] != 'object'}
+												<li>{toTitleCase(key)}: {filteredGear(item.id).visible.basic[key]}</li>
 											{/if}
 										{/each}
 									</ul>
 								</div>
 								<div class="space-y-2 ml-2 p-2">
 									<ul>
-										{#each Object.keys(item.visible.basic) as key}
-											<li>{toTitleCase(key)}: {item.visible.basic[key]}</li>
+										{#each Object.keys(filteredGear(item.id).visible.basic) as key}
+											<li>{toTitleCase(key)}: {filteredGear(item.id).visible.basic[key]}</li>
 										{/each}
-										{#each Object.keys(item.visible.combat) as key}
-											{#if item.visible.combat[key] && typeof item.visible.combat[key] != 'object'}
-												<li>{toTitleCase(key)}: {item.visible.combat[key]}</li>
-											{:else if key === 'type' && item.visible.combat.type.length > 0}
-												<li>{toTitleCase(key)}: {item.visible.combat[key]}</li>
+										{#each Object.keys(filteredGear(item.id).visible.combat) as key}
+											{#if filteredGear(item.id).visible.combat[key] && typeof filteredGear(item.id).visible.combat[key] != 'object'}
+												<li>{toTitleCase(key)}: {filteredGear(item.id).visible.combat[key]}</li>
+											{:else if key === 'type' && filteredGear(item.id).visible.combat.type.length > 0}
+												<li>{toTitleCase(key)}: {filteredGear(item.id).visible.combat[key]}</li>
 											{/if}
 										{/each}
 									</ul>

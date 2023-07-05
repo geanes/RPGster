@@ -15,7 +15,6 @@
 	function addItems(): void {
 		$currentGear.equipment = [...$currentGear.equipment, ...addList];
 		addList = [];
-		console.log($currentGear.equipment);
 		modalStore.close();
 	}
 
@@ -38,7 +37,7 @@
 								class="btn-icon btn-icon-sm variant-soft-surface click:variant-filled-primary"
 								on:click={() => {
 									const gearToAdd = {
-										...item,
+										id: item.id,
 										equipped: false,
 										note: '',
 										tag: uuidv4()

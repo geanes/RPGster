@@ -35,6 +35,10 @@
 	function removeUserSpell(tag: string): void {
 		$currentSpells.userSpells = $currentSpells.userSpells.filter((item) => item.tag !== tag);
 	}
+
+	function filteredSpell(id: string): any {
+		return spells.find((item: any) => item.id === id);
+	}
 </script>
 
 <div class="card variant-glass-surface">
@@ -45,15 +49,15 @@
 			</span>
 			<span class="p-2 pr-4 justify-self-end">
 				<button
-					title="Add gear"
-					class="btn-icon btn-icon-sm variant-filled"
+					title="Add spell"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalAddSpell}
 				>
 					<iconify-icon icon="mdi:add-bold" />
 				</button>
 				<button
-					title="New gear"
-					class="btn-icon btn-icon-sm variant-filled"
+					title="New spell"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalNewSpell}
 				>
 					<iconify-icon icon="grommet-icons:new" />
@@ -83,7 +87,7 @@
 						</svelte:fragment>
 						<svelte:fragment slot="summary">
 							<span>
-								<h3 class="text-slate-100/80 inline-block">{item.name}</h3>
+								<h3 class="text-slate-100/80 inline-block">{filteredSpell(item.id).name}</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
 									on:click={() => removeSpell(item.tag)}
@@ -93,11 +97,13 @@
 								<span class="text-slate-100/70">{item.note}</span>
 							</span>
 							<ul class="text-slate-300/70 text-sm space-x-2">
-								<li class="inline-block text-orange-400/70">{item.casting_time}</li>
-								<li class="inline-block text-orange-400/70">{item.range}</li>
-								<li class="inline-block text-orange-400/70">{item.duration}</li>
-								<li class="inline-block">{item.level}</li>
-								<li class="inline-block">{item.school}</li>
+								<li class="inline-block text-orange-400/70">
+									{filteredSpell(item.id).casting_time}
+								</li>
+								<li class="inline-block text-orange-400/70">{filteredSpell(item.id).range}</li>
+								<li class="inline-block text-orange-400/70">{filteredSpell(item.id).duration}</li>
+								<li class="inline-block">{filteredSpell(item.id).level}</li>
+								<li class="inline-block">{filteredSpell(item.id).school}</li>
 							</ul>
 						</svelte:fragment>
 						<svelte:fragment slot="content">
@@ -110,27 +116,46 @@
 											Description: <span
 												class="ml-2 pl-2 border-l-2 text-justify text-slate-300/70 border-slate-300/50"
 											>
-												{item.desc}
+												{filteredSpell(item.id).desc}
 											</span>
 										</li>
-										<li>Class: <span class="pl-2 text-slate-300/70">{item.class}</span></li>
 										<li>
-											Concentration: <span class="pl-2 text-slate-300/70">{item.concentration}</span
+											Class: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).class}</span
 											>
 										</li>
-										<li>Ritual: <span class="pl-2 text-slate-300/70">{item.ritual}</span></li>
 										<li>
-											Components: <span class="pl-2 text-slate-300/70">{item.components}</span>
+											Concentration: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).concentration}</span
+											>
 										</li>
-										<li>Material: <span class="pl-2 text-slate-300/70">{item.material}</span></li>
+										<li>
+											Ritual: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).ritual}</span
+											>
+										</li>
+										<li>
+											Components: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).components}</span
+											>
+										</li>
+										<li>
+											Material: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).material}</span
+											>
+										</li>
 										<li>
 											<span class="whitespace-nowrap">Higher level:</span><span
 												class="ml-2 pl-2 border-l-2 text-justify text-slate-300/70 border-slate-300/50"
 											>
-												{item.higher_level}
+												{filteredSpell(item.id).higher_level}
 											</span>
 										</li>
-										<li>Referece page: <span class="pl-2 text-slate-300/70">{item.page}</span></li>
+										<li>
+											Referece page: <span class="pl-2 text-slate-300/70"
+												>{filteredSpell(item.id).page}</span
+											>
+										</li>
 									</ul>
 								</div>
 								<div class="space-y-2 ml-2 p-2">

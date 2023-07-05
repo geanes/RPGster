@@ -15,7 +15,6 @@
 	function addItems(): void {
 		$currentSpells.spells = [...$currentSpells.spells, ...addList];
 		addList = [];
-		console.log($currentSpells.spells);
 		modalStore.close();
 	}
 
@@ -38,7 +37,7 @@
 								class="btn-icon btn-icon-sm variant-soft-surface click:variant-filled-primary"
 								on:click={() => {
 									const spellToAdd = {
-										...item,
+										id: item.id,
 										equipped: false,
 										note: '',
 										tag: uuidv4()

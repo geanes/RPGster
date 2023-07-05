@@ -1,4 +1,5 @@
-[
+{
+  "general": [
     {
       "id": "appraise",
       "name": "Appraise",
@@ -75,18 +76,6 @@
       "psi": false,
       "synergy": [],
       "ref": "https://www.d20srd.org/srd/skills/controlShape.htm"
-    },
-    {
-      "id": "craft",
-      "name": "Craft",
-      "ability": "int",
-      "trained": false,
-      "magic": false,
-      "psi": false,
-      "synergy": [
-        "appraise"
-      ],
-      "ref": "https://www.d20srd.org/srd/skills/craft.htm"
     },
     {
       "id": "decipher_script",
@@ -217,106 +206,6 @@
       "ref": "https://www.d20srd.org/srd/skills/jump.htm"
     },
     {
-      "id": "knowledge_arcana",
-      "name": "Knowledge (Arcana)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Arcana).htm"
-    },
-    {
-      "id": "knowledge_architecture_and_engineering",
-      "name": "Knowledge (Architecture and engineering)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(ArchitectureAndEngineering).htm"
-    },
-    {
-      "id": "knowledge_dungeoneering",
-      "name": "Knowledge (Dungeoneering)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Dungeoneering).htm"
-    },
-    {
-      "id": "knowledge_geography",
-      "name": "Knowledge (Geography)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Geography).htm"
-    },
-    {
-      "id": "knowledge_history",
-      "name": "Knowledge (History)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(History).htm"
-    },
-    {
-      "id": "knowledge_local",
-      "name": "Knowledge (Local)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Local).htm"
-    },
-    {
-      "id": "knowledge_nature",
-      "name": "Knowledge (Nature)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Nature).htm"
-    },
-    {
-      "id": "knowledge_nobility_and_royalty",
-      "name": "Knowledge (Nobility and royalty)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(NobilityAndRoyalty).htm"
-    },
-    {
-      "id": "knowledge_religion",
-      "name": "Knowledge (religion)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(Religion).htm"
-    },
-    {
-      "id": "knowledge_the_planes",
-      "name": "Knowledge (the Planes)",
-      "ability": "int",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/knowledge(ThePlanes).htm"
-    },
-    {
       "id": "listen",
       "name": "Listen",
       "ability": "wis",
@@ -345,26 +234,6 @@
       "psi": false,
       "synergy": [],
       "ref": "https://www.d20srd.org/srd/skills/openLock.htm"
-    },
-    {
-      "id": "perform",
-      "name": "Perform",
-      "ability": "cha",
-      "trained": false,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/perform.htm"
-    },
-    {
-      "id": "profession",
-      "name": "Profession",
-      "ability": "wis",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/profession.htm"
     },
     {
       "id": "psicraft",
@@ -421,16 +290,6 @@
       "psi": false,
       "synergy": [],
       "ref": "https://www.d20srd.org/srd/skills/sleightOfHand.htm"
-    },
-    {
-      "id": "speak_language",
-      "name": "Speak Language",
-      "ability": "",
-      "trained": true,
-      "magic": false,
-      "psi": false,
-      "synergy": [],
-      "ref": "https://www.d20srd.org/srd/skills/speakLanguage.htm"
     },
     {
       "id": "spellcraft",
@@ -524,4 +383,157 @@
       ],
       "ref": "https://www.d20srd.org/srd/skills/useRope.htm"
     }
+  ],
+  "knowledge": [
+    {
+      "id": "knowledge_arcana",
+      "name": "Arcana",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Arcana).htm"
+    },
+    {
+      "id": "knowledge_architecture_and_engineering",
+      "name": "Architecture and engineering",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(ArchitectureAndEngineering).htm"
+    },
+    {
+      "id": "knowledge_dungeoneering",
+      "name": "Dungeoneering",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Dungeoneering).htm"
+    },
+    {
+      "id": "knowledge_geography",
+      "name": "Geography",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Geography).htm"
+    },
+    {
+      "id": "knowledge_history",
+      "name": "History",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(History).htm"
+    },
+    {
+      "id": "knowledge_local",
+      "name": "Local",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Local).htm"
+    },
+    {
+      "id": "knowledge_nature",
+      "name": "Nature",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Nature).htm"
+    },
+    {
+      "id": "knowledge_nobility_and_royalty",
+      "name": "Nobility and royalty",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(NobilityAndRoyalty).htm"
+    },
+    {
+      "id": "knowledge_religion",
+      "name": "Religion",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(Religion).htm"
+    },
+    {
+      "id": "knowledge_the_planes",
+      "name": "The Planes",
+      "ability": "int",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/knowledge(ThePlanes).htm"
+    }
+  ],
+  "perform": [
+    {
+      "id": "perform",
+      "name": "General",
+      "ability": "cha",
+      "trained": false,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/perform.htm"
+    }
+  ],
+  "profession": [
+    {
+      "id": "profession",
+      "name": "General",
+      "ability": "wis",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/profession.htm"
+    }
+  ],
+  "language": [
+    {
+      "id": "speak_language",
+      "name": "Speak Common",
+      "ability": "",
+      "trained": true,
+      "magic": false,
+      "psi": false,
+      "synergy": [],
+      "ref": "https://www.d20srd.org/srd/skills/speakLanguage.htm"
+    }
+  ],
+  "craft": [
+    {
+      "id": "craft",
+      "name": "General",
+      "ability": "int",
+      "trained": false,
+      "magic": false,
+      "psi": false,
+      "synergy": [
+        "appraise"
+      ],
+      "ref": "https://www.d20srd.org/srd/skills/craft.htm"
+    }
   ]
+}

@@ -5,6 +5,11 @@
 	import { modalStore } from '@skeletonlabs/skeleton';
 
 	export let feats: any;
+	const featsIndex = Object.keys(feats);
+	const featsList = featsIndex.map((key) => {
+		const data = feats[key];
+		return { ...data, id: key };
+	});
 
 	function modalAddFeat(): void {
 		const modal: ModalSettings = {
@@ -29,10 +34,15 @@
 	}
 
 	function removeFeat(id: string): void {
-		$currentFeats.feats = $currentFeats.feats.filter((feat) => feat.id !== id);
+		$currentFeats.feats = $currentFeats.feats.filter((feat) => feat !== id);
 	}
 	function removeUserFeat(id: string): void {
 		$currentFeats.userFeats = $currentFeats.userFeats.filter((feat) => feat.id !== id);
+	}
+
+	function filteredFeat(id: string): any {
+		const result = featsList.filter((feats) => feats.id === id)[0];
+		return result;
 	}
 </script>
 
@@ -45,14 +55,14 @@
 			<span class="p-2 pr-4 justify-self-end">
 				<button
 					title="Add Feats"
-					class="btn-icon btn-icon-sm variant-filled"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalAddFeat}
 				>
 					<iconify-icon icon="mdi:add-bold" />
 				</button>
 				<button
 					title="Create a new Feat"
-					class="btn-icon btn-icon-sm variant-filled"
+					class="btn-icon btn-icon-sm variant-outline-tertiary"
 					on:click={modalNewFeat}
 				>
 					<iconify-icon icon="grommet-icons:new" />
@@ -68,30 +78,34 @@
 					<p class="min-w-max text-center">💪 Add or create feats</p>
 				{/if}
 				{#each $currentFeats.feats as feat}
-					<AccordionItem id={feat.id}>
+					<AccordionItem id={feat}>
 						<svelte:fragment slot="lead">
 							<span class="text-slate-100/70 w-[18px]">
 								<iconify-icon icon="material-symbols:circle" />
 							</span>
 						</svelte:fragment>
 						<svelte:fragment slot="summary">
-							<h3 class="inline-block">{feat.name}</h3>
+							<h3 class="inline-block">
+								{filteredFeat(feat).name}
+							</h3>
 							<button
 								class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-								on:click={() => removeFeat(feat.id)}
+								on:click={() => removeFeat(feat)}
 							>
 								<iconify-icon icon="material-symbols:delete" />
 							</button>
-							<p class="text-slate-300/70 text-sm">{feat.shortText}</p>
+							<p class="text-slate-300/70 text-sm">{filteredFeat(feat).shortText}</p>
 						</svelte:fragment>
 						<svelte:fragment slot="content">
 							<div
 								class="space-y-2 ml-8 pl-4 pr-6 pb-2 border-l-2 border-b-2 border-slate-500/70 rounded-sm"
 							>
 								<p class="text-slate-100/80 text-justify">
-									{feat.longText}
+									{filteredFeat(feat).longText}
 								</p>
-								<span class="ml-4 text-xs text-slate-100/70">Requires: {feat.prerequisites}</span>
+								<span class="ml-4 text-xs text-slate-100/70"
+									>Requires: {filteredFeat(feat).prerequisites}</span
+								>
 							</div>
 						</svelte:fragment>
 					</AccordionItem>

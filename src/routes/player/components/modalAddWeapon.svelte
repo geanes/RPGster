@@ -37,7 +37,7 @@
 								class="btn-icon btn-icon-sm variant-soft-surface click:variant-filled-primary"
 								on:click={() => {
 									const weaponToAdd = {
-										...item,
+										id: item.id,
 										equipped: false,
 										note: '',
 										tag: uuidv4()

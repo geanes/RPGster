@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { fade } from 'svelte/transition';
+	import { toastStore } from '@skeletonlabs/skeleton';
+	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import { AppBar } from '@skeletonlabs/skeleton';
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
 	import { triggerPlayerDrawer } from '$lib/utils/singletonDrawer';
@@ -15,8 +19,22 @@
 	import CharWeapons from './components/CharWeapons.svelte';
 	import CharEquipment from './components/CharEquipment.svelte';
 	import CharSpells from './components/CharSpells.svelte';
-	import { currentAttributes, currentMetadata, currentState } from './storeCharacter';
-	import Layout from '../+layout.svelte';
+	import {
+		currentMetadata,
+		currentState,
+		currentAvatar,
+		currentAttributes,
+		currentHealth,
+		currentAbilities,
+		currentSaves,
+		currentAttack,
+		currentMisc,
+		currentSkills,
+		currentFeats,
+		currentGear,
+		currentSpells,
+		defaultCharacter
+	} from './storeCharacter';
 
 	export let data;
 	const {
@@ -39,6 +57,33 @@
 	const gearList = [...general];
 
 	let tabSet: number = 0;
+
+	const resetCharacter = () => {
+		const character = JSON.parse($defaultCharacter);
+		$currentMetadata = character.metadata;
+		$currentState = character.state;
+		$currentAvatar = character.avatar;
+		$currentAttributes = character.attributes;
+		$currentHealth = character.health;
+		$currentAbilities = character.abilities;
+		$currentSaves = character.saves;
+		$currentAttack = character.attack;
+		$currentMisc = character.misc;
+		$currentSkills = character.skills;
+		$currentFeats = character.feats;
+		$currentGear = character.gear;
+		$currentSpells = character.spells;
+	};
+
+	const toastResetCharacter: ToastSettings = {
+		message: 'Are you sure you want to reset this character?',
+		autohide: false,
+		background: 'variant-filled-warning',
+		action: {
+			label: 'Reset',
+			response: () => resetCharacter()
+		}
+	};
 </script>
 
 <AppBar
@@ -51,8 +96,29 @@
 >
 	<svelte:fragment slot="lead">
 		<span class="pl-2 text-slate-50/50 align-middle">
-			<button class="btn-icon-xl hover:text-slate-100" on:click={triggerPlayerDrawer}>
+			<!-- <button class="btn-icon-xl hover:text-slate-100" on:click={triggerPlayerDrawer}>
 				<iconify-icon icon="mdi:hamburger-menu" />
+			</button> -->
+			<button
+				class="btn-icon btn-icon-sm variant-outline-primary"
+				title="Home"
+				on:click={() => goto('/')}
+			>
+				<iconify-icon icon="mdi:home" class="text-slate-100/80" />
+			</button>
+			<button
+				class="btn-icon btn-icon-sm variant-outline-primary"
+				title="Reset Character"
+				on:click={() => toastStore.trigger(toastResetCharacter)}
+			>
+				<iconify-icon icon="fluent-mdl2:reset" class="text-slate-100/80" />
+			</button>
+			<button
+				class="btn-icon btn-icon-sm variant-outline-primary"
+				title="Settings"
+				on:click={triggerPlayerDrawer}
+			>
+				<iconify-icon icon="mdi:tools" class="text-slate-100/80" />
 			</button>
 		</span>
 	</svelte:fragment>
@@ -82,7 +148,9 @@
 	</svelte:fragment>
 </AppBar>
 
-<CharAvatar />
+<span>
+	<CharAvatar />
+</span>
 
 <div class="mx-auto p-4 grid grid-cols-10 gap-2">
 	<div class="col-span-10">

@@ -21,9 +21,9 @@
 		modalStore.close();
 	}
 
-	const isChecked = (list: Feat[], id: string): boolean => {
-		const listIds = list.map((feat) => feat.id);
-		return listIds.includes(id);
+	const isChecked = (list: string[], id: string): boolean => {
+		// const listIds = list.map((feat) => feat.id);
+		return list.includes(id);
 	};
 
 	// Base Classes
@@ -48,10 +48,10 @@
 								bind:value={feat.id}
 								on:change={() => {
 									if (isChecked($currentFeats.feats, feat.id)) {
-										$currentFeats.feats = $currentFeats.feats.filter((f) => f.id !== feat.id);
+										$currentFeats.feats = $currentFeats.feats.filter((f) => f !== feat.id);
 									} else {
 										const featToAdd = feats.find((f) => f.id === feat.id);
-										$currentFeats.feats = [...$currentFeats.feats, featToAdd];
+										$currentFeats.feats = [...$currentFeats.feats, featToAdd.id];
 									}
 								}}
 							/>

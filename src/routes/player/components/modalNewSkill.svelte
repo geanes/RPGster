@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { toCamelCase } from '$lib/utils/utils';
+	import { v4 as uuidv4 } from 'uuid';
+	import { toCamelCase, toTitleCase } from '$lib/utils/utils';
 	import type { Skill } from '$lib/types/interfaceCharacter';
 	import { currentSkills, currentAbilities } from '../storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
@@ -9,10 +10,13 @@
 	export let parent: any;
 
 	const abilitiesList = Object.keys($currentAbilities);
+	const { categories } = $modalStore[0].meta;
 
 	const newSkill: Skill = {
 		id: '',
+		tag: '',
 		name: '',
+		category: 'general',
 		ability: '',
 		trained: false,
 		magic: false,
@@ -25,9 +29,9 @@
 
 	function onSubmit(): void {
 		newSkill.id = toCamelCase(newSkill.name);
+		newSkill.tag = uuidv4();
 		newSkill.ability = newSkill.ability && newSkill.ability.toLowerCase();
 		$currentSkills.userSkills = [...$currentSkills.userSkills, newSkill];
-		// console.log('new skill:', newSkill);
 		modalStore.close();
 	}
 
@@ -51,15 +55,25 @@
 					placeholder="Enter new skill name..."
 				/>
 			</label>
-			<label class="label">
-				<span>Ability</span>
-				<select class="select" bind:value={newSkill.ability}>
-					<option value="" selected>None</option>
-					{#each abilitiesList as ability}
-						<option value={ability}>{ability.toUpperCase()}</option>
-					{/each}
-				</select>
-			</label>
+			<div class="grid grid-cols-2 gap-2">
+				<label class="label">
+					<span>Category</span>
+					<select class="select" bind:value={newSkill.category}>
+						{#each categories as category}
+							<option value={category}>{toTitleCase(category)}</option>
+						{/each}
+					</select>
+				</label>
+				<label class="label">
+					<span>Ability</span>
+					<select class="select" bind:value={newSkill.ability}>
+						<option value="" selected>None</option>
+						{#each abilitiesList as ability}
+							<option value={ability}>{ability.toUpperCase()}</option>
+						{/each}
+					</select>
+				</label>
+			</div>
 			<div class="space-y-2 grid grid-cols-3 gap-4 justify-items-center">
 				<label class="flex items-center space-x-2">
 					<input class="checkbox" type="checkbox" bind:value={newSkill.trained} checked />

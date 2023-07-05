@@ -38,10 +38,16 @@
 								class="btn-icon btn-icon-sm variant-soft-surface click:variant-filled-primary"
 								on:click={() => {
 									const armorToAdd = {
-										...item,
+										id: item.id,
 										equipped: false,
 										note: '',
-										tag: uuidv4()
+										tag: uuidv4(),
+										hidden: {
+											type: item.hidden.type
+										},
+										visible: {
+											armorBonus: item.visible.armorBonus
+										}
 									};
 									addList = [...addList, armorToAdd];
 									// totalCost += item.description.price;

@@ -5,12 +5,8 @@
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { storePopup } from '@skeletonlabs/skeleton';
 	import { convertHexColor } from '$lib/utils/utils';
 	import { currentAvatar, currentHealth, currentAttributes } from '../storeCharacter';
-
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
 	const popupAvatar: PopupSettings = {
 		event: 'click',
@@ -50,18 +46,24 @@
 	let ringMeter: string = 'stroke-primary-500';
 	let ringTrack: string = 'stroke-surface-500/30';
 	$: {
-		hpRing = Math.round(($currentHealth.currentHP / $currentHealth.maxHP) * 100);
-		if ($currentHealth.currentHP > $currentHealth.maxHP) {
-			ringMeter = 'stroke-secondary-500';
-			ringTrack = 'stroke-primary-500';
-		} else if ($currentHealth.currentHP < 0) {
-			ringMeter = 'stroke-error-500';
-		} else if (hpRing <= 25) {
-			ringMeter = 'stroke-warning-500';
-			ringTrack = 'stroke-surface-500/30';
-		} else {
+		if ($currentHealth.dmgBuff === 0) {
+			hpRing = 100;
 			ringMeter = 'stroke-primary-500';
 			ringTrack = 'stroke-surface-500/30';
+		} else {
+			hpRing = Math.round(($currentHealth.currentHP / $currentHealth.maxHP) * 100);
+			if ($currentHealth.currentHP > $currentHealth.maxHP) {
+				ringMeter = 'stroke-secondary-500';
+				ringTrack = 'stroke-primary-500';
+			} else if ($currentHealth.currentHP < 0) {
+				ringMeter = 'stroke-error-500';
+			} else if (hpRing <= 25) {
+				ringMeter = 'stroke-warning-500';
+				ringTrack = 'stroke-surface-500/30';
+			} else {
+				ringMeter = 'stroke-primary-500';
+				ringTrack = 'stroke-surface-500/30';
+			}
 		}
 	}
 </script>
@@ -164,9 +166,13 @@
 				</div>
 			</li>
 			<li>
-				<a class="anchor" href="https://www.dicebear.com/playground?style=avataaars"
-					>Design at Dicebear</a
+				<a
+					class="anchor"
+					href="https://www.dicebear.com/playground?style=avataaars"
+					target="_blank"
 				>
+					Design at Dicebear
+				</a>
 			</li>
 		</ul>
 	</div>

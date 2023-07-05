@@ -1,6 +1,7 @@
 // Metadata
 export interface CharacterMetadata {
 	campaign: string;
+	naddr?: string;
 }
 // Avatar
 export interface CharacterAvatar {
@@ -103,6 +104,8 @@ export interface CharacterMisc {
 export interface Skill {
 	id: string;
 	name: string;
+	tag?: string | undefined;
+	category?: string;
 	ability?: string;
 	trained?: boolean;
 	magic?: boolean;
@@ -120,15 +123,15 @@ export interface CharacterSkills {
 export interface Feat {
 	[key: string]: string | undefined;
 	id: string;
-	name: string;
-	longText: string;
-	shortText: string;
-	prerequisites: string;
+	name?: string;
+	longText?: string;
+	shortText?: string;
+	prerequisites?: string;
 	type?: string;
 	ref?: string;
 }
 export interface CharacterFeats {
-	feats: Feat[];
+	feats: string[];
 	userFeats: Feat[];
 }
 // Armor
