@@ -63,7 +63,7 @@
 					{width}
 					rounded="rounded-full"
 					cursor="cursor-pointer"
-					border="hover:border-2 border-slate-100/90"
+					border="border hover:border-2 border-slate-100/90"
 					shadow="shadow-2xl hover:shadow-xl"
 				/>
 			</div>

@@ -55,19 +55,16 @@ export interface CharacterAbilities {
 }
 // Saves
 export interface CharacterSaves {
-	fortTotal: number | null;
 	fortBase: number;
 	fortMagicMod: number;
 	fortMiscMod: number;
 	fortTempMod: number;
 	fortTemp: boolean;
-	reflexTotal: number | null;
 	reflexBase: number;
 	reflexMagicMod: number;
 	reflexMiscMod: number;
 	reflexTempMod: number;
 	reflexTemp: boolean;
-	willTotal: number | null;
 	willBase: number;
 	willMagicMod: number;
 	willMiscMod: number;
@@ -78,7 +75,6 @@ export interface CharacterSaves {
 export interface CharacterAttack {
 	bab: number;
 	spellResist: number;
-	grappleTotal: number | null;
 	grappleMiscMod: number;
 }
 // Misc
@@ -88,15 +84,12 @@ export interface CharacterMisc {
 	speedTemp: boolean;
 	initTotal: number | null;
 	initMiscMod: number;
-	acTotal: number | null;
 	acBase: number;
 	armorBonus: number;
 	shieldBonus: number;
 	naturalArmor: number;
 	deflectMod: number;
 	acMiscMod: number;
-	touch: number;
-	flatFooted: number;
 	maxHP: number;
 	dmgReduction: number;
 }

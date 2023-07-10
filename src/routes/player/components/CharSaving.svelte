@@ -1,42 +1,11 @@
 <script lang="ts">
-	import { currentAbilities, currentSaves, modify } from '../storeCharacter';
-
-	$: {
-		let activeConMod = $currentAbilities.conTemp
-			? $currentAbilities.con.modTemp
-			: $currentAbilities.con.mod;
-		let includeFortTemp = $currentSaves.fortTemp ? $currentSaves.fortTempMod : 0;
-		$currentSaves.fortTotal =
-			$currentSaves.fortBase +
-			activeConMod +
-			$currentSaves.fortMagicMod +
-			$currentSaves.fortMiscMod +
-			includeFortTemp;
-	}
-	$: {
-		let activeDexMod = $currentAbilities.dex.temp
-			? $currentAbilities.dex.modTemp
-			: $currentAbilities.dex.mod;
-		let includeReflexTemp = $currentSaves.reflexTemp ? $currentSaves.reflexTempMod : 0;
-		$currentSaves.reflexTotal =
-			$currentSaves.reflexBase +
-			activeDexMod +
-			$currentSaves.reflexMagicMod +
-			$currentSaves.reflexMiscMod +
-			includeReflexTemp;
-	}
-	$: {
-		let activeWisMod = $currentAbilities.wis.temp
-			? $currentAbilities.wis.modTemp
-			: $currentAbilities.wis.mod;
-		let includeWillTemp = $currentSaves.willTemp ? $currentSaves.willTempMod : 0;
-		$currentSaves.willTotal =
-			$currentSaves.willBase +
-			activeWisMod +
-			$currentSaves.willMagicMod +
-			$currentSaves.willMiscMod +
-			includeWillTemp;
-	}
+	import {
+		currentAbilities,
+		currentSaves,
+		currentAbilityModifiers,
+		currentSaveTotals,
+		modify
+	} from '../storeCharacter';
 </script>
 
 <section class="card variant-glass-surface min-w-max" class:variant-ringed-error={$modify}>
@@ -73,7 +42,7 @@
 				title="Fortitude Total"
 				class="bg-slate-500/40 p-2 text-center rounded-full"
 			>
-				<p>{$currentSaves.fortTotal}</p>
+				<p>{$currentSaveTotals.fortTotal}</p>
 			</div>
 			<div id="fortBase" title="Base Save" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentSaves.fortBase}</p>
@@ -84,11 +53,7 @@
 				class="bg-slate-500/40 p-2 text-center rounded-sm"
 				class:variant-outline-warning={$currentAbilities.con.temp}
 			>
-				{#if $currentAbilities.con.temp}
-					<p>{$currentAbilities.con.modTemp}</p>
-				{:else}
-					<p>{$currentAbilities.con.mod}</p>
-				{/if}
+				<p>{$currentAbilityModifiers.activeConMod}</p>
 			</div>
 			<input
 				id="fortMagicMod"
@@ -135,7 +100,7 @@
 				title="Reflex Total"
 				class="bg-slate-500/40 p-2 text-center rounded-full"
 			>
-				<p>{$currentSaves.reflexTotal}</p>
+				<p>{$currentSaveTotals.reflexTotal}</p>
 			</div>
 			<div id="reflexBase" title="Base Save" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentSaves.reflexBase}</p>
@@ -146,11 +111,7 @@
 				class="bg-slate-500/40 p-2 text-center rounded-sm"
 				class:variant-outline-warning={$currentAbilities.dex.temp}
 			>
-				{#if $currentAbilities.dex.temp}
-					<p>{$currentAbilities.dex.modTemp}</p>
-				{:else}
-					<p>{$currentAbilities.dex.mod}</p>
-				{/if}
+				<p>{$currentAbilityModifiers.activeDexMod}</p>
 			</div>
 			<input
 				id="reflexMagicMod"
@@ -193,7 +154,7 @@
 				Will
 			</button>
 			<div id="willTotal" title="Will Total" class="bg-slate-500/40 p-2 text-center rounded-full">
-				<p>{$currentSaves.willTotal}</p>
+				<p>{$currentSaveTotals.willTotal}</p>
 			</div>
 			<div id="willBase" title="Base Save" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentSaves.willBase}</p>
@@ -204,11 +165,7 @@
 				class="bg-slate-500/40 p-2 text-center rounded-sm"
 				class:variant-outline-warning={$currentAbilities.wis.temp}
 			>
-				{#if $currentAbilities.wis.temp}
-					<p>{$currentAbilities.wis.modTemp}</p>
-				{:else}
-					<p>{$currentAbilities.wis.mod}</p>
-				{/if}
+				<p>{$currentAbilityModifiers.activeWisMod}</p>
 			</div>
 			<input
 				id="willMagicMod"

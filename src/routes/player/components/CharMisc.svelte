@@ -4,36 +4,10 @@
 		currentAbilities,
 		currentMisc,
 		currentHealth,
+		currentAbilityModifiers,
+		currentACTotals,
 		modify
 	} from '../storeCharacter';
-
-	$: {
-		let activeDexMod = $currentAbilities.dex.temp
-			? $currentAbilities.dex.modTemp
-			: $currentAbilities.dex.mod;
-		$currentMisc.acTotal =
-			$currentMisc.acBase +
-			$currentMisc.armorBonus +
-			$currentMisc.shieldBonus +
-			activeDexMod +
-			$currentAttributes.sizeMod +
-			$currentMisc.naturalArmor +
-			$currentMisc.deflectMod +
-			$currentMisc.acMiscMod;
-		$currentMisc.touch =
-			$currentMisc.acBase +
-			activeDexMod +
-			$currentAttributes.sizeMod +
-			$currentMisc.deflectMod +
-			$currentMisc.acMiscMod;
-		$currentMisc.flatFooted =
-			$currentMisc.acBase +
-			$currentMisc.armorBonus +
-			$currentAttributes.sizeMod +
-			$currentMisc.naturalArmor +
-			$currentMisc.deflectMod +
-			$currentMisc.acMiscMod;
-	}
 </script>
 
 <section class="card variant-glass-surface min-w-max" class:variant-ringed-error={$modify}>
@@ -88,15 +62,16 @@
 				id="touch"
 				title="Touch AC"
 				class="col-start-5 bg-slate-500/40 p-2 text-center rounded-sm"
+				class:variant-outline-warning={$currentAbilities.dex.temp}
 			>
-				<p>{$currentMisc.touch}</p>
+				<p>{$currentACTotals.touch}</p>
 			</div>
 			<div
 				id="flatFooted"
 				title="Flat Footed AC"
 				class="col-start-6 bg-slate-500/40 p-2 text-center rounded-sm"
 			>
-				<p>{$currentMisc.flatFooted}</p>
+				<p>{$currentACTotals.flatFooted}</p>
 			</div>
 			<input
 				id="dmgNonLethal"
@@ -161,7 +136,7 @@
 				title="Armor Class Total"
 				class="bg-slate-500/40 p-2 text-center rounded-full"
 			>
-				<p>{$currentMisc.acTotal}</p>
+				<p>{$currentACTotals.acTotal}</p>
 			</div>
 			<div id="acBase" title="AC Base" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentMisc.acBase}</p>
@@ -178,11 +153,7 @@
 				class="bg-slate-500/40 p-2 text-center rounded-sm"
 				class:variant-outline-warning={$currentAbilities.dex.temp}
 			>
-				{#if $currentAbilities.dex.temp}
-					<p>{$currentAbilities.dex.modTemp}</p>
-				{:else}
-					<p>{$currentAbilities.dex.mod}</p>
-				{/if}
+				<p>{$currentAbilityModifiers.activeDexMod}</p>
 			</div>
 			<div id="sizeMod" title="Size Modifier" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentAttributes.sizeMod}</p>

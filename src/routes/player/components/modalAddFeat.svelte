@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-	import type { Feat } from '$lib/types/interfaceCharacter';
+	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
+	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
 	import { currentFeats } from '../storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
 

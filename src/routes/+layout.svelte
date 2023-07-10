@@ -10,7 +10,7 @@
 	import { browser } from '$app/environment';
 	import { nip19 } from 'nostr-tools';
 	import ndk, { connected } from '$lib/stores/ndk';
-	import { NDKEvent } from '@nostr-dev-kit/ndk';
+	import { NDKEvent, NDKList } from '@nostr-dev-kit/ndk';
 	import type { NDKTag } from '@nostr-dev-kit/ndk';
 	import { unixTimeNow } from '$lib/utils/helpers';
 	import Authenticate from '$lib/components/Authenticate.svelte';
@@ -51,6 +51,7 @@
 		currentAttributes,
 		currentMetadata
 	} from './player/storeCharacter';
+	import { list } from 'postcss';
 
 	let canPost: boolean = false;
 	const charListName = 'RPGstr Characters';
@@ -114,29 +115,31 @@
 		};
 		try {
 			const charList = await $ndk.fetchEvent(listFilter).then((listEvent) => {
-				if (!listEvent) {
+				const hasList = !!listEvent;
+				if (!hasList) {
 					// console.log('No list found');
 					return false;
 				}
-				const tagExists = listEvent?.tags.find((tag) => tag[0] === 'a' && tag[1] === aTag[1]);
-				const exists = tagExists !== undefined ? true : false;
+				const fetchedAtags = listEvent.getMatchingTags('a');
+				const tagExists = fetchedAtags.find((t) => t[1] === aTag[1]);
+				const exists = !!tagExists;
 
 				if (exists) {
 					// console.log('Character already in list');
 					return listEvent;
 				} else {
-					const fetchedTags: NDKTag[] = listEvent?.tags !== undefined ? listEvent?.tags : [];
-					let tags = fetchedTags;
-					if (aTag && aTag !== undefined) tags.push(aTag);
-					const event = new NDKEvent($ndk, {
+					let event = new NDKEvent($ndk, {
 						content: '',
 						kind: 30001,
 						pubkey: pubkey,
 						created_at: unixTimeNow(),
-						tags: [...charTags]
+						tags: [...listEvent.tags]
 					});
+					if (aTag && aTag !== undefined) event.tags.push(aTag);
+
 					try {
 						event.publish();
+						console.log(listEvent);
 						// console.log('Character added to list', event);
 						return event;
 					} catch (error) {
@@ -200,13 +203,15 @@
 		// });
 		try {
 			await event.publish();
+			// console.log('Character to post', event);
 			toastPosted();
 			if (!$currentMetadata.naddr) $currentMetadata.naddr = nip19.naddrEncode(naddrInput);
 			// Check for RPGstr Characters list, create if not found, add character to list
-			const hasList = await hasCharactersList(pubkey, charListName, [
+			const hasCharList = await hasCharactersList(pubkey, charListName, [
 				'a',
 				`${kind}:${pubkey}:${identifier}`
 			]);
+			const hasList = !!hasCharList;
 			if (!hasList) {
 				await createCharactersList(pubkey, charListName, ['a', `${kind}:${pubkey}:${identifier}`]);
 			}

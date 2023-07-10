@@ -42,8 +42,8 @@
 	"dependencies": {
 		"@dicebear/collection": "^6.0.4",
 		"@dicebear/core": "^6.0.4",
-		"@nostr-dev-kit/ndk": "^0.7.3",
-		"@nostr-dev-kit/ndk-svelte-components": "^0.3.0",
+		"@nostr-dev-kit/ndk": "^0.7.5",
+		"@nostr-dev-kit/ndk-svelte-components": "^0.3.2",
 		"iconify-icon": "^1.0.7",
 		"semver": "^7.5.3",
 		"uuid": "^9.0.0"
