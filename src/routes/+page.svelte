@@ -138,16 +138,19 @@
 </script>
 
 <section class="grid grid-rows-6 gap-4 h-screen place-items-center">
-	<!-- {#if !$currentUser}
-		<div class="self-start p-8 row-start-1">
-			<div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
-				<input type="search" placeholder="Search npub..." bind:value={npubSearch} />
-				<button class="variant-soft-secondary">
-					<iconify-icon icon="mdi:magnify" />
-				</button>
-			</div>
+	<!-- <div class="self-start p-8 row-start-1">
+		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto]" in:fade>
+			<input
+				type="search"
+				placeholder="Search naddr or npub..."
+				bind:value={npubSearch}
+				class="w-96"
+			/>
+			<button class="variant-soft-secondary">
+				<iconify-icon icon="mdi:magnify" />
+			</button>
 		</div>
-	{/if} -->
+	</div> -->
 	<div class="self-end p-8 row-start-2">
 		<Authenticate />
 	</div>

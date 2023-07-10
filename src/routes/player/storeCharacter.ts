@@ -109,19 +109,16 @@ export const currentAbilities = writable(<CharacterAbilities>{
 });
 // Saves
 export const currentSaves = writable(<CharacterSaves>{
-	fortTotal: null,
 	fortBase: 0,
 	fortMagicMod: 0,
 	fortMiscMod: 0,
 	fortTempMod: 0,
 	fortTemp: false,
-	reflexTotal: null,
 	reflexBase: 0,
 	reflexMagicMod: 0,
 	reflexMiscMod: 0,
 	reflexTempMod: 0,
 	reflexTemp: false,
-	willTotal: null,
 	willBase: 0,
 	willMagicMod: 0,
 	willMiscMod: 0,
@@ -132,7 +129,6 @@ export const currentSaves = writable(<CharacterSaves>{
 export const currentAttack = writable(<CharacterAttack>{
 	bab: 0,
 	spellResist: 0,
-	grappleTotal: null,
 	grappleMiscMod: 0
 });
 // Misc
@@ -142,15 +138,12 @@ export const currentMisc = writable(<CharacterMisc>{
 	speedTemp: false,
 	initTotal: null,
 	initMiscMod: 0,
-	acTotal: null,
 	acBase: 10,
 	armorBonus: 0,
 	shieldBonus: 0,
 	naturalArmor: 0,
 	deflectMod: 0,
 	acMiscMod: 0,
-	touch: 0,
-	flatFooted: 0,
 	maxHP: 0,
 	dmgReduction: 0
 });
@@ -192,6 +185,85 @@ export const shortCharacterDescription = derived([currentAttributes], ([$current
 	const cclass = $currentAttributes.class ? toTitleCase($currentAttributes.class) : '';
 	return !name ? '' : `${name} - Level ${level} ${race} ${cclass}`;
 });
+
+// Calculate current ability modifiers
+export const currentAbilityModifiers = derived([currentAbilities], ([$currentAbilities]) => {
+	const { str, dex, con, int, wis, cha } = $currentAbilities;
+	const activeStrMod = str.temp ? str.modTemp : str.mod;
+	const activeDexMod = dex.temp ? dex.modTemp : dex.mod;
+	const activeConMod = con.temp ? con.modTemp : con.mod;
+	const activeIntMod = int.temp ? int.modTemp : int.mod;
+	const activeWisMod = wis.temp ? wis.modTemp : wis.mod;
+	const activeChaMod = cha.temp ? cha.modTemp : cha.mod;
+	return { activeStrMod, activeDexMod, activeConMod, activeIntMod, activeWisMod, activeChaMod };
+});
+
+// Calculate current AC totals
+export const currentACTotals = derived(
+	[currentMisc, currentAttributes, currentAbilityModifiers],
+	([$currentMisc, $currentAttributes, $currentAbilityModifiers]) => {
+		const { acBase, armorBonus, shieldBonus, naturalArmor, deflectMod, acMiscMod } = $currentMisc;
+		const { activeDexMod } = $currentAbilityModifiers;
+		const { sizeMod } = $currentAttributes;
+		const acTotal =
+			acBase +
+			armorBonus +
+			shieldBonus +
+			activeDexMod +
+			sizeMod +
+			naturalArmor +
+			deflectMod +
+			acMiscMod;
+		const touch = acBase + activeDexMod + sizeMod + deflectMod + acMiscMod;
+		const flatFooted = acBase + armorBonus + sizeMod + naturalArmor + deflectMod + acMiscMod;
+		return { acTotal, touch, flatFooted };
+	}
+);
+
+// Calculate current save totals
+export const currentSaveTotals = derived(
+	[currentSaves, currentAbilityModifiers],
+	([$currentSaves, $currentAbilityModifiers]) => {
+		const {
+			fortBase,
+			fortMagicMod,
+			fortMiscMod,
+			fortTemp,
+			fortTempMod,
+			reflexBase,
+			reflexMagicMod,
+			reflexMiscMod,
+			reflexTemp,
+			reflexTempMod,
+			willBase,
+			willMagicMod,
+			willMiscMod,
+			willTemp,
+			willTempMod
+		} = $currentSaves;
+		const { activeConMod, activeDexMod, activeWisMod } = $currentAbilityModifiers;
+		const includeFortTemp = $currentSaves.fortTemp ? $currentSaves.fortTempMod : 0;
+		const includeReflexTemp = $currentSaves.reflexTemp ? $currentSaves.reflexTempMod : 0;
+		const includeWillTemp = $currentSaves.willTemp ? $currentSaves.willTempMod : 0;
+		const fortTotal = fortBase + fortMagicMod + fortMiscMod + includeFortTemp + activeConMod;
+		const reflexTotal =
+			reflexBase + reflexMagicMod + reflexMiscMod + includeReflexTemp + activeDexMod;
+		const willTotal = willBase + willMagicMod + willMiscMod + includeWillTemp + activeWisMod;
+		return { fortTotal, reflexTotal, willTotal };
+	}
+);
+
+// Calculate current attack totals
+export const currentAttackTotals = derived(
+	[currentAttack, currentAttributes, currentAbilityModifiers],
+	([$currentAttack, $currentAttributes, $currentAbilityModifiers]) => {
+		const { bab, grappleMiscMod } = $currentAttack;
+		const { activeStrMod } = $currentAbilityModifiers;
+		const { sizeMod } = $currentAttributes;
+		const grappleTotal = bab + activeStrMod + sizeMod + grappleMiscMod;
+		return { grappleTotal };
+	}
+);
 
 // Stringified Character for export
 export const stringifiedCharacter = derived(

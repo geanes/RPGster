@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
+	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
+	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
 	import { currentGear, modify } from '../storeCharacter';
 	import type { ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
@@ -63,8 +65,11 @@
 				</button>
 			</span>
 		</div>
-		<hr class="slate-500/30" />
-		<div class="grow max-h-[42rem] min-h-[42rem] p-2 overflow-auto text-slate-100/70">
+		<div class="flex flex-row pl-10 pb-2 border-b-[1px] border-slate-500/30 text-slate-100/50">
+			<span class="w-full shrink invisible">Weapons</span>
+		</div>
+		<!-- <hr class="slate-500/30" /> -->
+		<div class="grow max-h-[40rem] min-h-[40rem] p-2 overflow-auto text-slate-100/70">
 			<Accordion autocollapse>
 				{#if $currentGear.weapons.length === 0 && $currentGear.userWeapons.length === 0}
 					<p class="min-w-max text-center">⚔️ Add or create weapons</p>

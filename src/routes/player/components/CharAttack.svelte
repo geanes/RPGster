@@ -1,16 +1,12 @@
 <script lang="ts">
-	import { currentAttack, currentAbilities, modify, currentAttributes } from '../storeCharacter';
-
-	$: {
-		let activeStrMod = $currentAbilities.str.temp
-			? $currentAbilities.str.modTemp
-			: $currentAbilities.str.mod;
-		$currentAttack.grappleTotal =
-			$currentAttack.bab +
-			activeStrMod +
-			$currentAttributes.sizeMod +
-			$currentAttack.grappleMiscMod;
-	}
+	import {
+		currentAttack,
+		currentAbilities,
+		currentAttributes,
+		currentAbilityModifiers,
+		currentAttackTotals,
+		modify
+	} from '../storeCharacter';
 </script>
 
 <section class="card min-w-max variant-glass-surface" class:variant-ringed-error={$modify}>
@@ -72,7 +68,7 @@
 				title="Grapple Modifier Total"
 				class="bg-slate-500/40 p-2 text-center rounded-full"
 			>
-				<p>{$currentAttack.grappleTotal}</p>
+				<p>{$currentAttackTotals.grappleTotal}</p>
 			</div>
 			<div
 				id="grappleBab"
@@ -87,11 +83,7 @@
 				class="bg-slate-500/40 p-2 text-center rounded-sm"
 				class:variant-outline-warning={$currentAbilities.str.temp}
 			>
-				{#if $currentAbilities.str.temp}
-					<p>{$currentAbilities.str.modTemp}</p>
-				{:else}
-					<p>{$currentAbilities.str.mod}</p>
-				{/if}
+				<p>{$currentAbilityModifiers.activeStrMod}</p>
 			</div>
 			<div id="sizeMod" title="Size Modifier" class="bg-slate-500/40 p-2 text-center rounded-sm">
 				<p>{$currentAttributes.sizeMod}</p>
