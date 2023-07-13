@@ -1,4 +1,3 @@
-// import { writable } from 'svelte/store';
 import { writable, readable, derived } from '@svelte-kits/store';
 import { toTitleCase } from '$lib/utils/utils';
 import type {

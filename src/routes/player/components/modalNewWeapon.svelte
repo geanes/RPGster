@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { v4 as uuidv4 } from 'uuid';
+	import { generateRandomId } from '$lib/utils/helpers';
 	import { toCamelCase } from '$lib/utils/utils';
 	import { currentGear } from '$lib/stores/storeCharacter';
 	import { modalStore, InputChip } from '@skeletonlabs/skeleton';
@@ -10,7 +10,7 @@
 
 	let newWeapon = {
 		id: '',
-		tag: '',
+		uid: '',
 		ref: '',
 		note: '',
 		equipped: false,
@@ -50,7 +50,7 @@
 
 	function onSubmit(): void {
 		newWeapon.id = toCamelCase(newWeapon.description.name);
-		newWeapon.tag = uuidv4();
+		newWeapon.uid = generateRandomId();
 		$currentGear.userWeapons = [...$currentGear.userWeapons, newWeapon];
 		modalStore.close();
 	}

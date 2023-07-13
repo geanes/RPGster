@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { generateRandomId } from '$lib/utils/helpers';
 	import { toCamelCase } from '$lib/utils/utils';
 	import type { Feat } from '$lib/types/interfaceCharacter';
 	import { currentFeats } from '$lib/stores/storeCharacter';
@@ -10,6 +11,7 @@
 
 	const newFeat: Feat = {
 		id: '',
+		uid: undefined,
 		name: '',
 		longText: '',
 		shortText: '',
@@ -20,6 +22,7 @@
 
 	function onSubmit(): void {
 		newFeat.id = toCamelCase(newFeat.name);
+		newFeat.uid = generateRandomId();
 		$currentFeats.userFeats = [...$currentFeats.userFeats, newFeat];
 		modalStore.close();
 	}

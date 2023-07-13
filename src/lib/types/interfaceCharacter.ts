@@ -97,7 +97,7 @@ export interface CharacterMisc {
 export interface Skill {
 	id: string;
 	name: string;
-	tag?: string | undefined;
+	uid?: string | undefined;
 	category?: string;
 	ability?: string;
 	trained?: boolean;
@@ -116,7 +116,8 @@ export interface CharacterSkills {
 export interface Feat {
 	[key: string]: string | undefined;
 	id: string;
-	name?: string;
+	uid?: string;
+	name: string;
 	longText?: string;
 	shortText?: string;
 	prerequisites?: string;

@@ -14,7 +14,6 @@
 
 	export let skills: any;
 	export let classes: any;
-	// const { general, knowledge, perform, profession, language, craft } = skills;
 	const skillsCategories = Object.keys(skills);
 
 	function modalNewSkill(): void {
@@ -33,7 +32,6 @@
 	let classSkills: string[] = [];
 
 	function compileSkillsList() {
-		// const currentIDs: string[] = current.skills.map((skill: Skill) => skill.id);
 		let skillsList: Skill[] = [];
 		skillsCategories.map((category) => {
 			skills[category].map((skill: any) => {
@@ -68,12 +66,12 @@
 		return abilityMod + ranks + misc;
 	};
 
-	function removeUserSkill(tag: string | undefined): void {
+	function removeUserSkill(uid: string | undefined): void {
 		$currentSkills.userSkills =
-			tag === undefined
+			uid === undefined
 				? $currentSkills.userSkills
 				: ($currentSkills.userSkills = $currentSkills.userSkills.filter(
-						(skill) => skill.tag !== tag
+						(skill) => skill.uid !== uid
 				  ));
 	}
 
@@ -150,10 +148,10 @@
 												target="_blank"
 												class:cursor-not-allowed={!item.ref}>{item.name}</a
 											>
-											{#if item.tag !== undefined && item.tag}
+											{#if item.uid !== undefined && item.uid}
 												<button
 													class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-													on:click={() => removeUserSkill(item.tag)}
+													on:click={() => removeUserSkill(item.uid)}
 												>
 													<iconify-icon icon="material-symbols:delete" />
 												</button>
