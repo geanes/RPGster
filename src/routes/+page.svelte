@@ -9,22 +9,8 @@
 	import { fade } from 'svelte/transition';
 	import { toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
-	import {
-		currentMetadata,
-		currentState,
-		currentAvatar,
-		currentAttributes,
-		currentHealth,
-		currentAbilities,
-		currentSaves,
-		currentAttack,
-		currentMisc,
-		currentSkills,
-		currentFeats,
-		currentGear,
-		currentSpells,
-		defaultCharacter
-	} from '$lib/stores/storeCharacter';
+	import { loadCharacter } from '$lib/utils/characterUtils';
+	import { currentMetadata } from '$lib/stores/storeCharacter';
 
 	let npubSearch: string = '';
 	let userRole: 'player' | 'gm' | null = null;
@@ -40,6 +26,7 @@
 		toastLoadId = toastStore.trigger(t);
 	}
 
+	// REFACTOR AND MOVE
 	async function fetchCharacters(pubkey: string, tag: string = 'RPGstr Characters') {
 		const listFilter: any = {
 			kinds: [30001],
@@ -79,7 +66,8 @@
 		}
 	};
 
-	const loadCharacter = async (splitTag: string) => {
+	// REFACTOR AND MOVE
+	const fetchLoadCharacter = async (splitTag: string) => {
 		toastLoadingCharacter();
 		const naddrInput: nip19.AddressPointer = {
 			identifier: splitTag[2],
@@ -93,42 +81,11 @@
 		});
 		const character: string | undefined = characterData?.content;
 		if (character === undefined) return;
-		const parsed = JSON.parse(character);
-		$currentMetadata = parsed.metadata;
-		$currentState = parsed.state;
-		$currentAvatar = parsed.avatar;
-		$currentAttributes = parsed.attributes;
-		$currentHealth = parsed.health;
-		$currentAbilities = parsed.abilities;
-		$currentSaves = parsed.saves;
-		$currentAttack = parsed.attack;
-		$currentMisc = parsed.misc;
-		$currentSkills = parsed.skills;
-		$currentFeats = parsed.feats;
-		$currentGear = parsed.gear;
-		$currentSpells = parsed.spells;
+		loadCharacter({ char: character, nav: false });
 		if ($currentMetadata === undefined || !$currentMetadata.naddr) {
 			$currentMetadata.naddr = naddr;
 		}
 		toastStore.close(toastLoadId);
-		goto('./player');
-	};
-
-	const newCharacter = () => {
-		const character = JSON.parse($defaultCharacter);
-		$currentMetadata = character.metadata;
-		$currentState = character.state;
-		$currentAvatar = character.avatar;
-		$currentAttributes = character.attributes;
-		$currentHealth = character.health;
-		$currentAbilities = character.abilities;
-		$currentSaves = character.saves;
-		$currentAttack = character.attack;
-		$currentMisc = character.misc;
-		$currentSkills = character.skills;
-		$currentFeats = character.feats;
-		$currentGear = character.gear;
-		$currentSpells = character.spells;
 		goto('./player');
 	};
 
@@ -171,7 +128,7 @@
 				<button
 					class="btn-icon variant-outline-primary"
 					title="New Character"
-					on:click={newCharacter}
+					on:click={() => loadCharacter({ nav: true })}
 				>
 					<iconify-icon icon="mdi:add-bold" />
 				</button>
@@ -185,7 +142,7 @@
 							<button
 								class="btn btn-sm variant-outline-surface"
 								in:fade
-								on:click={() => loadCharacter(character)}>{character[2]}</button
+								on:click={() => fetchLoadCharacter(character)}>{character[2]}</button
 							>
 						{/each}
 					{/if}

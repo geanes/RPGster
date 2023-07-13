@@ -24,7 +24,7 @@ function parseNaddrString(
 function parseEventOrString(
 	input: NDKEvent | string,
 	marker = ''
-): { kind: number; pubkey: string; identifier: string; tag: NDKTag } {
+): { kind: number | undefined; pubkey: string; identifier: string; tag: NDKTag } {
 	let tag: NDKTag;
 	if (typeof input === 'string') {
 		return parseNaddrString(input, marker);

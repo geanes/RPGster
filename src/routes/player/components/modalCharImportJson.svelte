@@ -1,20 +1,6 @@
 <script lang="ts">
 	import { modalStore } from '@skeletonlabs/skeleton';
-	import {
-		currentMetadata,
-		currentState,
-		currentAvatar,
-		currentAttributes,
-		currentHealth,
-		currentAbilities,
-		currentSaves,
-		currentAttack,
-		currentMisc,
-		currentSkills,
-		currentFeats,
-		currentGear,
-		currentSpells
-	} from '$lib/stores/storeCharacter';
+	import { loadCharacter } from '$lib/utils/characterUtils';
 
 	// Props
 	/** Exposes parent props to this component. */
@@ -23,20 +9,7 @@
 	let charJson = '';
 
 	const importCharacterJson = () => {
-		const character = JSON.parse(charJson);
-		$currentMetadata = character.metadata;
-		$currentState = character.state;
-		$currentAvatar = character.avatar;
-		$currentAttributes = character.attributes;
-		$currentHealth = character.health;
-		$currentAbilities = character.abilities;
-		$currentSaves = character.saves;
-		$currentAttack = character.attack;
-		$currentMisc = character.misc;
-		$currentSkills = character.skills;
-		$currentFeats = character.feats;
-		$currentGear = character.gear;
-		$currentSpells = character.spells;
+		loadCharacter({ char: charJson });
 		modalStore.close();
 	};
 

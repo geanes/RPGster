@@ -11,6 +11,7 @@
 		ProgressBar
 	} from '@skeletonlabs/skeleton';
 
+	import { loadCharacter } from '$lib/utils/characterUtils';
 	import { triggerPlayerDrawer } from '$lib/utils/singletonDrawer';
 	import EditCharacter from './components/EditCharacter.svelte';
 	import CharAvatar from './components/CharAvatar.svelte';
@@ -18,18 +19,7 @@
 	import {
 		currentMetadata,
 		currentState,
-		currentAvatar,
 		currentAttributes,
-		currentHealth,
-		currentAbilities,
-		currentSaves,
-		currentAttack,
-		currentMisc,
-		currentSkills,
-		currentFeats,
-		currentGear,
-		currentSpells,
-		defaultCharacter,
 		shortCharacterDescription
 	} from '$lib/stores/storeCharacter';
 	import { currentUser } from '$lib/stores/currentUser';
@@ -40,30 +30,13 @@
 	export let data;
 	const { levels, races, alignments, classes } = data;
 
-	const resetCharacter = () => {
-		const character = JSON.parse($defaultCharacter);
-		$currentMetadata = character.metadata;
-		$currentState = character.state;
-		$currentAvatar = character.avatar;
-		$currentAttributes = character.attributes;
-		$currentHealth = character.health;
-		$currentAbilities = character.abilities;
-		$currentSaves = character.saves;
-		$currentAttack = character.attack;
-		$currentMisc = character.misc;
-		$currentSkills = character.skills;
-		$currentFeats = character.feats;
-		$currentGear = character.gear;
-		$currentSpells = character.spells;
-	};
-
 	const toastResetCharacter: ToastSettings = {
 		message: 'Are you sure you want to reset this character?',
 		autohide: false,
 		background: 'variant-filled-warning',
 		action: {
 			label: 'Reset',
-			response: () => resetCharacter()
+			response: () => loadCharacter({})
 		}
 	};
 
