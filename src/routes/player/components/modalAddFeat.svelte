@@ -2,7 +2,7 @@
 	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
 	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
-	import { currentFeats } from '../storeCharacter';
+	import { currentFeats } from '$lib/stores/storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
 
 	// Props

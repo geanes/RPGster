@@ -12,7 +12,7 @@
 	} from '@skeletonlabs/skeleton';
 
 	import { triggerPlayerDrawer } from '$lib/utils/singletonDrawer';
-	import EditCharacter from './EditCharacter.svelte';
+	import EditCharacter from './components/EditCharacter.svelte';
 	import CharAvatar from './components/CharAvatar.svelte';
 	import CharAttributes from './components/CharAttributes.svelte';
 	import {
@@ -29,9 +29,13 @@
 		currentFeats,
 		currentGear,
 		currentSpells,
-		defaultCharacter
-	} from './storeCharacter';
+		defaultCharacter,
+		shortCharacterDescription
+	} from '$lib/stores/storeCharacter';
 	import { currentUser } from '$lib/stores/currentUser';
+	import ndk from '$lib/stores/ndk';
+	import { stringifiedCharacter } from '$lib/stores/storeCharacter';
+	import { generateCharacter } from '$lib/utils/eventUtils';
 
 	export let data;
 	const { levels, races, alignments, classes } = data;
@@ -64,6 +68,21 @@
 	};
 
 	let currentTile: number = 1;
+
+	function testPlayer() {
+		if ($currentUser === undefined) return console.log('No user logged in');
+		const result = generateCharacter({
+			ndk: $ndk,
+			kind: 31974,
+			user: $currentUser,
+			name: $currentAttributes.name,
+			desc: $shortCharacterDescription,
+			game: $currentMetadata.campaign,
+			content: $stringifiedCharacter,
+			system: 'DnD 3.5e'
+		});
+		return console.log(result);
+	}
 </script>
 
 <section class="overflow-hidden">
@@ -181,8 +200,11 @@
 			</div>
 		</svelte:fragment>
 
-		<!-- EDIT TILE -->
-		{#if currentTile === 1}
+		{#if currentTile === 0}
+			<!-- EDIT TILE -->
+			<button class="btn" on:click={testPlayer}>Log to console</button>
+		{:else if currentTile === 1}
+			<!-- PLAY TILE -->
 			<EditCharacter {data} />
 		{/if}
 	</AppShell>

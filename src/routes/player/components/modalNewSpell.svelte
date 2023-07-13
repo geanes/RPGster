@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { v4 as uuidv4 } from 'uuid';
 	import { toCamelCase } from '$lib/utils/utils';
-	import { currentSpells } from '../storeCharacter';
+	import { currentSpells } from '$lib/stores/storeCharacter';
 	import { modalStore, InputChip } from '@skeletonlabs/skeleton';
 
 	// Props

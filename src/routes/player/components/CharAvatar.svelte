@@ -6,7 +6,7 @@
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import { convertHexColor } from '$lib/utils/utils';
-	import { currentAvatar, currentHealth, currentAttributes } from '../storeCharacter';
+	import { currentAvatar, currentHealth, currentAttributes } from '$lib/stores/storeCharacter';
 
 	const popupAvatar: PopupSettings = {
 		event: 'click',

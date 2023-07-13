@@ -14,7 +14,7 @@
 		currentFeats,
 		currentGear,
 		currentSpells
-	} from '../storeCharacter';
+	} from '$lib/stores/storeCharacter';
 
 	// Props
 	/** Exposes parent props to this component. */

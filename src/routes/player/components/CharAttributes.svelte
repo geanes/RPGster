@@ -10,7 +10,7 @@
 		currentHealth,
 		currentSaves,
 		modify
-	} from '../storeCharacter';
+	} from '$lib/stores/storeCharacter';
 
 	export let levels: any;
 	export let races: any;
@@ -83,11 +83,25 @@
 		class:variant-filled-error={$modify}
 		on:click={() => ($modify = !$modify)}
 	>
-		<iconify-icon icon="uil:edit" />
-	</button> -->
+	<iconify-icon icon="uil:edit" />
+</button> -->
 	<div class="p-4 space-y-2">
 		<div class="grid grid-cols-10 gap-2">
-			{#if !condensed}
+			{#if condensed && $currentAttributes.name && $currentAttributes.race && $currentAttributes.class}
+				<div class="col-span-6 flex gap-4 items-end pb-4 text-slate-200/90">
+					<span
+						class="text-4xl font-light tracking-tight font-sans decoration-0 underline underline-offset-8"
+					>
+						{$currentAttributes.name}
+					</span>
+					<span class="text-2xl font-thin tracking-tight">
+						{toTitleCase($currentAttributes.race)}
+					</span>
+					<span class="text-2xl font-thin tracking-tight">
+						{toTitleCase($currentAttributes.class)}
+					</span>
+				</div>
+			{:else}
 				<label class="label col-span-2">
 					<span class="text-xs text-slate-50/50">Character Name</span>
 					<input
@@ -124,20 +138,6 @@
 						{/each}
 					</select>
 				</label>
-			{:else}
-				<div class="col-span-6 flex gap-4 items-end pb-4 text-slate-200/90">
-					<span
-						class="text-4xl font-light tracking-tight font-sans decoration-0 underline underline-offset-8"
-					>
-						{$currentAttributes.name}
-					</span>
-					<span class="text-2xl font-thin tracking-tight">
-						{toTitleCase($currentAttributes.race)}
-					</span>
-					<span class="text-2xl font-thin tracking-tight">
-						{toTitleCase($currentAttributes.class)}
-					</span>
-				</div>
 			{/if}
 
 			<label class="label col-start-7">

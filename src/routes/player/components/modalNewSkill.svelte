@@ -2,7 +2,7 @@
 	import { v4 as uuidv4 } from 'uuid';
 	import { toCamelCase, toTitleCase } from '$lib/utils/utils';
 	import type { Skill } from '$lib/types/interfaceCharacter';
-	import { currentSkills, currentAbilities } from '../storeCharacter';
+	import { currentSkills, currentAbilities } from '$lib/stores/storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
 
 	// Props

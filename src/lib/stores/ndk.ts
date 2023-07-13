@@ -5,7 +5,7 @@ const ndk = new NDK({
 	explicitRelayUrls: [
 		'wss://purplepag.es',
 		// 'wss://relay.nostr.band',
-		'wss://nos.lol',
+		// 'wss://nos.lol',
 		'wss://relay.snort.social',
 		'wss://relay.damus.io'
 	],

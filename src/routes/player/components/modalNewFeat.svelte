@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { toCamelCase } from '$lib/utils/utils';
 	import type { Feat } from '$lib/types/interfaceCharacter';
-	import { currentFeats } from '../storeCharacter';
+	import { currentFeats } from '$lib/stores/storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
 
 	// Props

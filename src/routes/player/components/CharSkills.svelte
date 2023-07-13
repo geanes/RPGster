@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { currentSkills, currentAttributes, currentAbilities, modify } from '../storeCharacter';
+	import {
+		currentSkills,
+		currentAttributes,
+		currentAbilities,
+		modify
+	} from '$lib/stores/storeCharacter';
 	import { crossfade } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import type { ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { toTitleCase } from '$lib/utils/utils';
 	import type { Skill } from '$lib/types/interfaceCharacter';
-	import { construct_svelte_component } from 'svelte/internal';
 
 	export let skills: any;
 	export let classes: any;

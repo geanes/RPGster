@@ -24,7 +24,7 @@
 		currentGear,
 		currentSpells,
 		defaultCharacter
-	} from './player/storeCharacter';
+	} from '$lib/stores/storeCharacter';
 
 	let npubSearch: string = '';
 	let userRole: 'player' | 'gm' | null = null;

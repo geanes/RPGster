@@ -2,7 +2,7 @@
 	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
 	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
-	import { currentSpells, modify } from '../storeCharacter';
+	import { currentSpells, modify } from '$lib/stores/storeCharacter';
 	import type { ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { toTitleCase } from '$lib/utils/utils';

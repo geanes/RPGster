@@ -179,11 +179,10 @@ export const defaultCharacter = readable(
 
 // Short description of the character
 export const shortCharacterDescription = derived([currentAttributes], ([$currentAttributes]) => {
-	const name = $currentAttributes.name;
 	const level = $currentAttributes.level;
 	const race = $currentAttributes.race ? toTitleCase($currentAttributes.race) : '';
 	const cclass = $currentAttributes.class ? toTitleCase($currentAttributes.class) : '';
-	return !name ? '' : `${name} - Level ${level} ${race} ${cclass}`;
+	return `Level ${level} ${race} ${cclass}`;
 });
 
 // Calculate current ability modifiers

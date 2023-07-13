@@ -50,7 +50,7 @@
 		stringifiedCharacter,
 		currentAttributes,
 		currentMetadata
-	} from './player/storeCharacter';
+	} from '$lib/stores/storeCharacter';
 	import { list } from 'postcss';
 
 	let canPost: boolean = false;
