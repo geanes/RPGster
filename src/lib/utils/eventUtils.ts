@@ -8,7 +8,17 @@ import type { AddressPointer } from 'nostr-tools/lib/nip19';
 // const kHost = 31973;
 // const kElement = 31972;
 
-function parseNaddrString(
+export function getNaddr(event: NDKEvent): string {
+	const { kind, pubkey } = event;
+	const naddrInput: nip19.AddressPointer = {
+		identifier: event.replaceableDTag(),
+		pubkey: pubkey as string,
+		kind: kind as number
+	};
+	return nip19.naddrEncode(naddrInput);
+}
+
+export function parseNaddrString(
 	input: string,
 	marker?: string
 ): { kind: number; pubkey: string; identifier: string; tag: NDKTag } {
@@ -46,7 +56,8 @@ export function generateRoot({
 	system,
 	image,
 	game,
-	gameId
+	gameId,
+	uid
 }: {
 	ndk: NDK;
 	kind: number;
@@ -58,14 +69,16 @@ export function generateRoot({
 	image?: string;
 	game?: string;
 	gameId?: NDKTag | string;
+	uid?: string;
 }): NDKEvent {
 	const pubkey = user.pubkey !== undefined ? user.pubkey : '';
+	const identifier = uid ? uid : generateRandomId();
 	const event: NostrEvent = {
 		created_at: unixTimeNow(),
 		kind: kind,
 		pubkey: pubkey,
 		tags: [
-			['d', generateRandomId()],
+			['d', identifier],
 			['d', 'root'],
 			['name', name],
 			['desc', desc]
@@ -135,7 +148,8 @@ export function generateCharacter({
 	inventoryContent = '',
 	actionsContent = '',
 	game,
-	gameId
+	gameId,
+	uid
 }: {
 	ndk: NDK;
 	kind: number;
@@ -150,12 +164,25 @@ export function generateCharacter({
 	actionsContent?: string;
 	game?: string;
 	gameId?: NDKTag | string;
+	uid?: string;
 }): NDKEvent[] {
-	const root = generateRoot({ ndk, kind, user, name, desc, content, system, image, game, gameId });
-	const state = generateChild({ ndk, root, childType: 'state', content: stateContent });
-	const inventory = generateChild({ ndk, root, childType: 'inventory', content: inventoryContent });
+	const root = generateRoot({
+		ndk,
+		kind,
+		user,
+		name,
+		desc,
+		content,
+		system,
+		image,
+		game,
+		gameId,
+		uid
+	});
+	// const state = generateChild({ ndk, root, childType: 'state', content: stateContent });
+	// const inventory = generateChild({ ndk, root, childType: 'inventory', content: inventoryContent });
 	// const actions = generateChild(ndk, root, childType: 'actions', content: actionsContent);
-	root.sign();
+	// root.sign();
 	// return [root, state, inventory, actions];
-	return [root, state, inventory];
+	return [root];
 }

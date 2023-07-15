@@ -8,11 +8,8 @@
 	import '../app.postcss';
 	// NOSTR stuff
 	import { browser } from '$app/environment';
-	import { nip19 } from 'nostr-tools';
 	import ndk, { connected } from '$lib/stores/ndk';
-	import { NDKEvent, NDKList } from '@nostr-dev-kit/ndk';
-	import type { NDKTag } from '@nostr-dev-kit/ndk';
-	import { unixTimeNow } from '$lib/utils/helpers';
+	import { generateCharacter } from '$lib/utils/eventUtils';
 	import Authenticate from '$lib/components/Authenticate.svelte';
 	import { RelayList } from '@nostr-dev-kit/ndk-svelte-components';
 	import { currentUser } from '$lib/stores/currentUser';
@@ -42,16 +39,15 @@
 	import AddGear from './player/components/modalAddGear.svelte';
 	import NewSpell from './player/components/modalNewSpell.svelte';
 	import AddSpell from './player/components/modalAddSpell.svelte';
-	// Character Export/Import
 	import CharExportJson from './player/components/modalCharExportJson.svelte';
 	import CharImportJson from './player/components/modalCharImportJson.svelte';
 	import 'iconify-icon';
 	import {
 		stringifiedCharacter,
 		currentAttributes,
-		currentMetadata
+		currentMetadata,
+		shortCharacterDescription
 	} from '$lib/stores/storeCharacter';
-	import { list } from 'postcss';
 
 	let canPost: boolean = false;
 	const charListName = 'RPGstr Characters';
@@ -89,16 +85,6 @@
 		toastStore.trigger(t);
 	}
 
-	function toastCharacterListCreated(): void {
-		const t: ToastSettings = {
-			message: 'RPGstr Characters list created',
-			autohide: true,
-			timeout: 1000,
-			background: 'variant-filled-primary'
-		};
-		toastStore.trigger(t);
-	}
-
 	if (browser) {
 		$ndk.connect().then(() => {
 			$connected = true;
@@ -106,115 +92,24 @@
 		});
 	}
 
-	async function hasCharactersList(pubkey: string, tag: string = charListName, aTag: string[]) {
-		let charTags: NDKTag[] = [['d', tag]];
-		const listFilter: any = {
-			kinds: [30001],
-			authors: [pubkey],
-			'#d': [tag]
-		};
-		try {
-			const charList = await $ndk.fetchEvent(listFilter).then((listEvent) => {
-				const hasList = !!listEvent;
-				if (!hasList) {
-					// console.log('No list found');
-					return false;
-				}
-				const fetchedAtags = listEvent.getMatchingTags('a');
-				const tagExists = fetchedAtags.find((t) => t[1] === aTag[1]);
-				const exists = !!tagExists;
-
-				if (exists) {
-					// console.log('Character already in list');
-					return listEvent;
-				} else {
-					let event = new NDKEvent($ndk, {
-						content: '',
-						kind: 30001,
-						pubkey: pubkey,
-						created_at: unixTimeNow(),
-						tags: [...listEvent.tags]
-					});
-					if (aTag && aTag !== undefined) event.tags.push(aTag);
-
-					try {
-						event.publish();
-						console.log(listEvent);
-						// console.log('Character added to list', event);
-						return event;
-					} catch (error) {
-						console.log(error);
-					}
-				}
-			});
-			return charList;
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	async function createCharactersList(pubkey: string, tag: string = charListName, aTag?: string[]) {
-		let charTags: NDKTag[] = [['d', tag]];
-		if (aTag && aTag !== undefined) charTags.push(aTag);
-		const event = new NDKEvent($ndk, {
-			content: '',
-			kind: 30001,
-			pubkey: pubkey,
-			created_at: unixTimeNow(),
-			tags: [...charTags]
-		});
-		try {
-			await event.publish();
-			// console.log('Character list created', event);
-			toastCharacterListCreated();
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
+	// MOVE
 	async function postChar() {
 		const kind: number = 31974;
-		const pubkey: string = $currentUser?.pubkey as string;
-		const identifier: string = $currentAttributes.name as string;
-		const naddrInput: nip19.AddressPointer = {
-			identifier: identifier,
-			pubkey: pubkey,
-			kind: kind
-		};
-		let charTags: NDKTag[] = [
-			['d', identifier],
-			['a', `${kind}:${pubkey}:${identifier}`]
-		];
-		charTags.push(['d', 'RPGstr Character' as string]);
-		const event = new NDKEvent($ndk, {
+		if (!$currentUser) return;
+		const event = generateCharacter({
+			ndk: $ndk,
+			kind,
+			user: $currentUser,
+			name: $currentAttributes.name,
+			desc: $shortCharacterDescription,
 			content: $stringifiedCharacter,
-			kind: kind,
-			pubkey: pubkey,
-			created_at: unixTimeNow(),
-			tags: [...charTags]
+			system: 'DnD 3.5e',
+			uid: $currentMetadata.uid
 		});
-		// TEST EVENT KIND 1
-		// const event = new NDKEvent($ndk, {
-		// 	content: 'Hello from NDK 0.7.3',
-		// 	kind: 1,
-		// 	pubkey: $currentUser?.pubkey as string,
-		// 	created_at: unixTimeNow(),
-		// 	tags: []
-		// });
 		try {
-			await event.publish();
-			// console.log('Character to post', event);
+			await event[0].publish();
+			// console.log('Character posted', event);
 			toastPosted();
-			if (!$currentMetadata.naddr) $currentMetadata.naddr = nip19.naddrEncode(naddrInput);
-			// Check for RPGstr Characters list, create if not found, add character to list
-			const hasCharList = await hasCharactersList(pubkey, charListName, [
-				'a',
-				`${kind}:${pubkey}:${identifier}`
-			]);
-			const hasList = !!hasCharList;
-			if (!hasList) {
-				await createCharactersList(pubkey, charListName, ['a', `${kind}:${pubkey}:${identifier}`]);
-			}
 		} catch (error) {
 			console.log('Error publishing: ', error);
 		}

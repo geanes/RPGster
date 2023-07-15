@@ -52,7 +52,8 @@
 			desc: $shortCharacterDescription,
 			game: $currentMetadata.campaign,
 			content: $stringifiedCharacter,
-			system: 'DnD 3.5e'
+			system: 'DnD 3.5e',
+			uid: $currentMetadata.uid
 		});
 		return console.log(result);
 	}

@@ -1,20 +1,21 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { nip19 } from 'nostr-tools';
-	import ndk from '$lib/stores/ndk';
-	import type { NDKTag } from '@nostr-dev-kit/ndk';
-	import { connected } from '$lib/stores/ndk';
+	import ndk, { connected } from '$lib/stores/ndk';
+	import type { NDKFilter, NDKEvent } from '@nostr-dev-kit/ndk';
 	import { currentUser } from '$lib/stores/currentUser';
 	import Authenticate from '$lib/components/Authenticate.svelte';
+	import EventCard from '$lib/components/EventCard.svelte';
 	import { fade } from 'svelte/transition';
 	import { toastStore } from '@skeletonlabs/skeleton';
 	import type { ToastSettings } from '@skeletonlabs/skeleton';
 	import { loadCharacter } from '$lib/utils/characterUtils';
+	import { getNaddr } from '$lib/utils/eventUtils';
 	import { currentMetadata } from '$lib/stores/storeCharacter';
 
 	let npubSearch: string = '';
 	let userRole: 'player' | 'gm' | null = null;
-	let characterList: any = [];
+	let characterList: NDKEvent[] = [];
+	let characterListInfo: [{ name: string; desc: string; system: string }];
 	let toastLoadId: string = '';
 
 	function toastLoadingCharacter(): void {
@@ -26,25 +27,19 @@
 		toastLoadId = toastStore.trigger(t);
 	}
 
-	// REFACTOR AND MOVE
-	async function fetchCharacters(pubkey: string, tag: string = 'RPGstr Characters') {
-		const listFilter: any = {
-			kinds: [30001],
+	async function fetchCharacters(
+		kinds: number[],
+		pubkey: string,
+		tag: string = 'root'
+	): Promise<NDKEvent[] | undefined> {
+		const filter: NDKFilter = {
+			kinds: kinds,
 			authors: [pubkey],
 			'#d': [tag]
 		};
 		if ($connected) {
-			const charList = await $ndk.fetchEvent(listFilter).then((fetchedEvent) => {
-				let list: NDKTag[] | undefined = [];
-				let result = undefined;
-				let atags: string[] | undefined = [];
-				list = fetchedEvent?.tags.filter((tag) => tag[0] === 'a');
-				atags = list?.map((item) => item[1]);
-				const tagsSplit = atags?.map((item) => {
-					return item.split(':').map((value) => value.trim());
-				});
-				result = tagsSplit;
-				return result;
+			const charList: NDKEvent[] = await $ndk.fetchEvents(filter).then((fetchedEvents) => {
+				return [...fetchedEvents];
 			});
 			return charList;
 		}
@@ -52,39 +47,35 @@
 
 	const handleGM = () => {
 		userRole = 'gm';
-		goto('./gamemaster');
+		// goto('./gamemaster');
 	};
 
 	const handlePlayer = () => {
 		userRole = 'player';
 		if ($currentUser && $currentUser.pubkey !== undefined) {
-			characterList = fetchCharacters($currentUser.pubkey, 'RPGstr Characters').then((result) => {
-				return result;
+			fetchCharacters([31974], $currentUser.pubkey, 'root').then((events) => {
+				if (events === undefined) return;
+				characterList = events;
+				characterList.forEach((char, index) => {
+					const name = char.getMatchingTags('name')[0][1];
+					const desc = char.getMatchingTags('desc')[0][1];
+					const system = char.getMatchingTags('system')[0][1];
+					const result = { name, desc, system };
+					index === 0 ? (characterListInfo = [result]) : characterListInfo.push(result);
+				});
 			});
 		} else {
 			goto('./player');
 		}
 	};
 
-	// REFACTOR AND MOVE
-	const fetchLoadCharacter = async (splitTag: string) => {
+	const getCharacter = async (char: NDKEvent) => {
 		toastLoadingCharacter();
-		const naddrInput: nip19.AddressPointer = {
-			identifier: splitTag[2],
-			pubkey: splitTag[1],
-			kind: 31974
-		};
-		const naddr = nip19.naddrEncode(naddrInput);
-		// console.log(naddr);
-		const characterData = await $ndk.fetchEvent(naddr).then((fetchedEvent) => {
-			return fetchedEvent;
-		});
-		const character: string | undefined = characterData?.content;
+		const character: string | undefined = char?.content;
 		if (character === undefined) return;
 		loadCharacter({ char: character, nav: false });
-		if ($currentMetadata === undefined || !$currentMetadata.naddr) {
-			$currentMetadata.naddr = naddr;
-		}
+		$currentMetadata.naddr = getNaddr(char);
+		$currentMetadata.uid = char.replaceableDTag();
 		toastStore.close(toastLoadId);
 		goto('./player');
 	};
@@ -94,7 +85,7 @@
 	}
 </script>
 
-<section class="grid grid-rows-6 gap-4 h-screen place-items-center">
+<section class="grid grid-rows-6 gap-4 h-screen place-items-center px-2">
 	<!-- <div class="self-start p-8 row-start-1">
 		<div class="input-group input-group-divider grid-cols-[auto_1fr_auto]" in:fade>
 			<input
@@ -122,7 +113,9 @@
 			</button>
 		</div>
 	</div>
-	<div class="flex flex-col gap-2 row-start-4 row-span-2 self-start place-items-center">
+	<div
+		class="flex flex-col py-2 px-8 gap-2 row-start-4 row-span-2 self-start place-items-center overflow-x-hidden"
+	>
 		{#if $currentUser !== undefined && userRole === 'player'}
 			<div class="align-self-center" in:fade>
 				<button
@@ -133,25 +126,33 @@
 					<iconify-icon icon="mdi:add-bold" />
 				</button>
 			</div>
-			<div class="flex flex-row gap-2 flex-wrap overflow-auto justify-center p-8" in:fade>
-				{#await characterList}
-					<!-- <p>Loading characters...</p> -->
-				{:then characters}
-					{#if characters}
-						{#each characters as character}
-							<button
-								class="btn btn-sm variant-outline-surface"
-								in:fade
-								on:click={() => fetchLoadCharacter(character)}>{character[2]}</button
-							>
-						{/each}
-					{/if}
-				{/await}
+			<div
+				class="flex-1 flex-nowrap min-w-0 max-w-xs 2xl:max-w-screen-2xl xl:max-w-screen-xl lg:max-w-screen-lg md:max-w-screen-md sm:max-w-sm"
+			>
+				<div class="flex flex-row gap-2 p-2 overflow-x-auto" in:fade>
+					{#await characterList}
+						<!-- <p>Loading characters...</p> -->
+					{:then characters}
+						{#if characters}
+							{#each characters as character, index}
+								<button in:fade on:click={() => getCharacter(character)}>
+									<EventCard role={userRole}>
+										<span slot="header">{characterListInfo[index].name}</span>
+										{characterListInfo[index].desc}
+										<span slot="footer">{characterListInfo[index].system}</span>
+									</EventCard>
+								</button>
+							{/each}
+						{/if}
+					{/await}
+				</div>
 			</div>
 		{:else if $connected && userRole === 'gm'}
-			<button class="btn-icon variant-outline-secondary" title="New Campaign">
-				<iconify-icon icon="mdi:add-bold" />
-			</button>
+			<div class="align-self-center" in:fade>
+				<button class="btn-icon variant-outline-secondary" title="New Campaign">
+					<iconify-icon icon="mdi:add-bold" />
+				</button>
+			</div>
 		{/if}
 	</div>
 	<div class="flex self-center m-0 gap-4 row-start-6">

@@ -2,6 +2,7 @@
 export interface CharacterMetadata {
 	campaign: string;
 	naddr?: string;
+	uid?: string;
 }
 // Avatar
 export interface CharacterAvatar {

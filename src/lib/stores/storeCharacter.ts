@@ -21,7 +21,8 @@ export const modify = writable(false);
 // Metadata
 export const currentMetadata = writable(<CharacterMetadata>{
 	campaign: 'New Campaign',
-	naddr: ''
+	naddr: '',
+	uid: ''
 });
 export const currentState = writable({
 	carryWeight: 0,

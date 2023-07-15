@@ -9,6 +9,7 @@
 	import { popup } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import { Avatar } from '@skeletonlabs/skeleton';
+	import { loadCharacter } from '$lib/utils/characterUtils';
 
 	export let width: string = 'w-24';
 	export let nameText: string = 'font-sans tracking-tight text-2xl text-slate-100/90 underline';
@@ -35,6 +36,7 @@
 	function logout(e: Event) {
 		e.preventDefault();
 		currentUser.set(undefined);
+		loadCharacter({});
 		window.sessionStorage.removeItem('RPGstrCurrentUser');
 		document.cookie = 'userNpub=';
 	}
