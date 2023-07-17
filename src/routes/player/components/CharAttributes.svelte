@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { toTitleCase } from '$lib/utils/utils';
 	// import racedata from '$lib/systems/dnd3.5e/data/races.json';
 	// import classdata from '$lib/systems/dnd3.5e/data/classes.json';
 	// import alignmentdata from '$lib/systems/dnd3.5e/data/alignments.json';
@@ -9,7 +10,7 @@
 		currentHealth,
 		currentSaves,
 		modify
-	} from '../storeCharacter';
+	} from '$lib/stores/storeCharacter';
 
 	export let levels: any;
 	export let races: any;
@@ -82,47 +83,64 @@
 		class:variant-filled-error={$modify}
 		on:click={() => ($modify = !$modify)}
 	>
-		<iconify-icon icon="uil:edit" />
-	</button> -->
+	<iconify-icon icon="uil:edit" />
+</button> -->
 	<div class="p-4 space-y-2">
 		<div class="grid grid-cols-10 gap-2">
-			<label class="label col-span-2">
-				<span class="text-xs text-slate-50/50">Character Name</span>
-				<input
-					id="cName"
-					class="input variant-form-material"
-					type="text"
-					placeholder="Character Name"
-					bind:value={$currentAttributes.name}
-				/>
-			</label>
-			<label class="label col-span-2">
-				<span class="text-xs text-slate-50/50">Race</span>
-				<select
-					id="cRace"
-					class="select variant-form-material"
-					bind:value={$currentAttributes.race}
-				>
-					<option value="" disabled selected>Race</option>
-					{#each racesList as item}
-						<option value={item.id}>{item.race.name}</option>
-					{/each}
-				</select>
-			</label>
-			<label class="label col-span-2">
-				<span class="text-xs text-slate-50/50">Class</span>
-				<select
-					id="cClass"
-					class="select variant-form-material"
-					bind:value={$currentAttributes.class}
-				>
-					<option value="" disabled selected>Class</option>
-					{#each classesList as item}
-						<option value={item.id}>{item.chClass.name}</option>
-					{/each}
-				</select>
-			</label>
-			<label class="label">
+			{#if condensed && $currentAttributes.name && $currentAttributes.race && $currentAttributes.class}
+				<div class="col-span-6 flex gap-4 items-end pb-4 text-slate-200/90">
+					<span
+						class="text-4xl font-light tracking-tight font-sans decoration-0 underline underline-offset-8"
+					>
+						{$currentAttributes.name}
+					</span>
+					<span class="text-2xl font-thin tracking-tight">
+						{toTitleCase($currentAttributes.race)}
+					</span>
+					<span class="text-2xl font-thin tracking-tight">
+						{toTitleCase($currentAttributes.class)}
+					</span>
+				</div>
+			{:else}
+				<label class="label col-span-2">
+					<span class="text-xs text-slate-50/50">Character Name</span>
+					<input
+						id="cName"
+						class="input variant-form-material"
+						type="text"
+						placeholder="Character Name"
+						bind:value={$currentAttributes.name}
+					/>
+				</label>
+				<label class="label col-span-2">
+					<span class="text-xs text-slate-50/50">Race</span>
+					<select
+						id="cRace"
+						class="select variant-form-material"
+						bind:value={$currentAttributes.race}
+					>
+						<option value="" disabled selected>Race</option>
+						{#each racesList as item}
+							<option value={item.id}>{item.race.name}</option>
+						{/each}
+					</select>
+				</label>
+				<label class="label col-span-2">
+					<span class="text-xs text-slate-50/50">Class</span>
+					<select
+						id="cClass"
+						class="select variant-form-material"
+						bind:value={$currentAttributes.class}
+					>
+						<option value="" disabled selected>Class</option>
+						{#each classesList as item}
+							<option value={item.id}>{item.chClass.name}</option>
+						{/each}
+					</select>
+				</label>
+			{/if}
+
+			<label class="label col-start-7">
 				<span class="text-xs text-slate-50/50">XP</span>
 				<input
 					id="cLevel"

@@ -1,12 +1,7 @@
 <script lang="ts">
-	import { v4 as uuidv4 } from 'uuid';
 	import { CodeBlock } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
-	import {
-		stringifiedCharacter,
-		shortCharacterDescription,
-		currentMetadata
-	} from '../storeCharacter';
+	import { stringifiedCharacter, shortCharacterDescription } from '$lib/stores/storeCharacter';
 
 	// Props
 	/** Exposes parent props to this component. */

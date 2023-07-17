@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { v4 as uuidv4 } from 'uuid';
+	import { generateRandomId } from '$lib/utils/helpers';
 	import { toCamelCase, toTitleCase } from '$lib/utils/utils';
 	import type { Skill } from '$lib/types/interfaceCharacter';
-	import { currentSkills, currentAbilities } from '../storeCharacter';
+	import { currentSkills, currentAbilities } from '$lib/stores/storeCharacter';
 	import { modalStore } from '@skeletonlabs/skeleton';
 
 	// Props
@@ -14,7 +14,7 @@
 
 	const newSkill: Skill = {
 		id: '',
-		tag: '',
+		uid: '',
 		name: '',
 		category: 'general',
 		ability: '',
@@ -29,7 +29,7 @@
 
 	function onSubmit(): void {
 		newSkill.id = toCamelCase(newSkill.name);
-		newSkill.tag = uuidv4();
+		newSkill.uid = generateRandomId();
 		newSkill.ability = newSkill.ability && newSkill.ability.toLowerCase();
 		$currentSkills.userSkills = [...$currentSkills.userSkills, newSkill];
 		modalStore.close();

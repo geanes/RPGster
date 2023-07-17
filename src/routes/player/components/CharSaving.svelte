@@ -5,7 +5,7 @@
 		currentAbilityModifiers,
 		currentSaveTotals,
 		modify
-	} from '../storeCharacter';
+	} from '$lib/stores/storeCharacter';
 </script>
 
 <section class="card variant-glass-surface min-w-max" class:variant-ringed-error={$modify}>

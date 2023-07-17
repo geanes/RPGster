@@ -1,8 +1,7 @@
 <script lang="ts">
-	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
 	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
-	import { currentGear, modify } from '../storeCharacter';
+	import { currentGear, modify } from '$lib/stores/storeCharacter';
 	import type { ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { toTitleCase } from '$lib/utils/utils';
@@ -31,11 +30,11 @@
 		modalStore.trigger(modal);
 	}
 
-	function removeWeapon(tag: string): void {
-		$currentGear.weapons = $currentGear.weapons.filter((weapon) => weapon.tag !== tag);
+	function removeWeapon(uid: string): void {
+		$currentGear.weapons = $currentGear.weapons.filter((weapon) => weapon.uid !== uid);
 	}
-	function removeUserWeapon(tag: string): void {
-		$currentGear.userWeapons = $currentGear.userWeapons.filter((weapon) => weapon.tag !== tag);
+	function removeUserWeapon(uid: string): void {
+		$currentGear.userWeapons = $currentGear.userWeapons.filter((weapon) => weapon.uid !== uid);
 	}
 	function filteredWeapon(id: string): any {
 		return weapons.find((item: any) => item.id === id);
@@ -75,13 +74,13 @@
 					<p class="min-w-max text-center">⚔️ Add or create weapons</p>
 				{/if}
 				{#each $currentGear.weapons as item, index}
-					<AccordionItem id={item.tag}>
+					<AccordionItem id={item.uid}>
 						<svelte:fragment slot="lead">
 							<input
 								class="checkbox variant-ringed-secondary"
 								type="checkbox"
 								checked={$currentGear.weapons[index].equipped}
-								bind:value={item.tag}
+								bind:value={item.uid}
 								on:change={() => {
 									$currentGear.weapons[index].equipped = $currentGear.weapons[index].equipped
 										? false
@@ -96,7 +95,7 @@
 								</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-									on:click={() => removeWeapon(item.tag)}
+									on:click={() => removeWeapon(item.uid)}
 								>
 									<iconify-icon icon="material-symbols:delete" />
 								</button>
@@ -155,13 +154,13 @@
 				{/each}
 				<!-- User weapons -->
 				{#each $currentGear.userWeapons as item, index}
-					<AccordionItem id={item.tag}>
+					<AccordionItem id={item.uid}>
 						<svelte:fragment slot="lead">
 							<input
 								class="checkbox variant-ringed-secondary"
 								type="checkbox"
 								checked={$currentGear.userWeapons[index].equipped}
-								bind:value={item.tag}
+								bind:value={item.uid}
 								on:change={() => {
 									$currentGear.userWeapons[index].equipped = $currentGear.userWeapons[index]
 										.equipped
@@ -179,7 +178,7 @@
 								<h3 class="text-slate-100/80 inline-block">{item.description.name}</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-									on:click={() => removeUserWeapon(item.tag)}
+									on:click={() => removeUserWeapon(item.uid)}
 								>
 									<iconify-icon icon="material-symbols:delete" />
 								</button>

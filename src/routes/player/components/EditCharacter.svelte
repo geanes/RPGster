@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { TabGroup, Tab } from '@skeletonlabs/skeleton';
-	import CharAbilities from './components/CharAbilities.svelte';
-	import CharAttack from './components/CharAttack.svelte';
-	import CharMisc from './components/CharMisc.svelte';
-	import CharSaving from './components/CharSaving.svelte';
-	import CharSkills from './components/CharSkills.svelte';
-	import CharFeats from './components/CharFeats.svelte';
-	import CharArmor from './components/CharArmor.svelte';
-	import CharWeapons from './components/CharWeapons.svelte';
-	import CharEquipment from './components/CharEquipment.svelte';
-	import CharSpells from './components/CharSpells.svelte';
+	import CharAbilities from './CharAbilities.svelte';
+	import CharAttack from './CharAttack.svelte';
+	import CharMisc from './CharMisc.svelte';
+	import CharSaving from './CharSaving.svelte';
+	import CharSkills from './CharSkills.svelte';
+	import CharFeats from './CharFeats.svelte';
+	import CharArmor from './CharArmor.svelte';
+	import CharWeapons from './CharWeapons.svelte';
+	import CharEquipment from './CharEquipment.svelte';
+	import CharSpells from './CharSpells.svelte';
 
 	export let data;
 

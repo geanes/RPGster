@@ -1,8 +1,7 @@
 <script lang="ts">
-	// import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import Accordion from '$lib/components/CustomAccordion/Accordion.svelte';
 	import AccordionItem from '$lib/components/CustomAccordion/AccordionItem.svelte';
-	import { currentSpells, modify } from '../storeCharacter';
+	import { currentSpells, modify } from '$lib/stores/storeCharacter';
 	import type { ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { toTitleCase } from '$lib/utils/utils';
@@ -31,11 +30,11 @@
 		modalStore.trigger(modal);
 	}
 
-	function removeSpell(tag: string): void {
-		$currentSpells.spells = $currentSpells.spells.filter((item) => item.tag !== tag);
+	function removeSpell(uid: string): void {
+		$currentSpells.spells = $currentSpells.spells.filter((item) => item.uid !== uid);
 	}
-	function removeUserSpell(tag: string): void {
-		$currentSpells.userSpells = $currentSpells.userSpells.filter((item) => item.tag !== tag);
+	function removeUserSpell(uid: string): void {
+		$currentSpells.userSpells = $currentSpells.userSpells.filter((item) => item.uid !== uid);
 	}
 
 	function filteredSpell(id: string): any {
@@ -73,13 +72,13 @@
 					<p class="min-w-max text-center">💥 Add or create spells</p>
 				{/if}
 				{#each $currentSpells.spells as item, index}
-					<AccordionItem id={item.tag}>
+					<AccordionItem id={item.uid}>
 						<svelte:fragment slot="lead">
 							<input
 								class="checkbox variant-ringed-secondary"
 								type="checkbox"
 								checked={$currentSpells.spells[index].equipped}
-								bind:value={item.tag}
+								bind:value={item.uid}
 								on:change={() => {
 									$currentSpells.spells[index].equipped = $currentSpells.spells[index].equipped
 										? false
@@ -92,7 +91,7 @@
 								<h3 class="text-slate-100/80 inline-block">{filteredSpell(item.id).name}</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-									on:click={() => removeSpell(item.tag)}
+									on:click={() => removeSpell(item.uid)}
 								>
 									<iconify-icon icon="material-symbols:delete" />
 								</button>
@@ -177,13 +176,13 @@
 				{/each}
 				<!-- User equipment -->
 				{#each $currentSpells.userSpells as item, index}
-					<AccordionItem id={item.tag}>
+					<AccordionItem id={item.uid}>
 						<svelte:fragment slot="lead">
 							<input
 								class="checkbox variant-ringed-secondary"
 								type="checkbox"
 								checked={$currentSpells.userSpells[index].equipped}
-								bind:value={item.tag}
+								bind:value={item.uid}
 								on:change={() => {
 									$currentSpells.userSpells[index].equipped = $currentSpells.userSpells[index]
 										.equipped
@@ -201,7 +200,7 @@
 								<h3 class="text-slate-100/80 inline-block">{item.name}</h3>
 								<button
 									class="btn m-0 pl-4 pb-0 align-baseline hover:text-error-500"
-									on:click={() => removeUserSpell(item.tag)}
+									on:click={() => removeUserSpell(item.uid)}
 								>
 									<iconify-icon icon="material-symbols:delete" />
 								</button>

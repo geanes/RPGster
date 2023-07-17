@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { currentAbilities, modify } from '../storeCharacter';
+	import { currentAbilities, modify } from '$lib/stores/storeCharacter';
 </script>
 
 <section class="card variant-glass-surface min-w-max" class:variant-ringed-error={$modify}>
